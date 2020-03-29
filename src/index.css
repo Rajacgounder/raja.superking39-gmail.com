@@ -1,0 +1,17 @@
+body nav {
+  margin: 0;
+  padding: 1em 0 !important;
+}
+
+body nav .navbar-brand {
+  font-size: 200%;
+}
+
+body nav .navbar-nav li .nav-link {
+  font-size: 1.5em;
+}
+
+body .project-link:hover {
+  text-decoration: none;
+}
+/*# sourceMappingURL=index.css.map */
