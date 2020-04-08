@@ -1,21 +1,7 @@
+import { actionTypes } from "redux-firestore";
+
 const initialState = {
-  projects: [
-    {
-      id: "1",
-      title: "First title",
-      content: "blablabla....",
-    },
-    {
-      id: "2",
-      title: "Second title",
-      content: "blablabla....",
-    },
-    {
-      id: "3",
-      title: "Third title",
-      content: "blablabla....",
-    },
-  ],
+  projects: [ ],
   isLoading: false,
 };
 
@@ -38,6 +24,11 @@ const projectReducer = (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false
       }
+    case "GET_CONSENTS": 
+      return {
+        ...state,
+        projects: payload 
+      }      
     default:
       return state;
   }

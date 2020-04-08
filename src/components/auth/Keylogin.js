@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signIn } from "../../store/actions/authActions";
+import { signIn } from "../../store/actions/keyaction";
 import { Redirect } from "react-router-dom";
 
-class Clientlogin extends Component {
+class Keylogin extends Component {
   state = {
     email: "",
     password: "",
@@ -22,12 +22,11 @@ class Clientlogin extends Component {
 
   render() {
     const { authError, auth } = this.props;
-    if (auth.uid) return <Redirect to="/" />;
+    if (auth.uid) return <Redirect to="/Keylogin" />;
     return (
       <div className="container">
         <div className="login-header my-5">
-          <h1>Login</h1>
-          <h6>Penta is the easiest way to manage team projects and tasks.</h6>
+          <h1> Key Role Login</h1>
         </div>
 
         <form onSubmit={this.handleSubmit}>
@@ -71,4 +70,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { signIn }
-)(Clientlogin);
+)(Keylogin);

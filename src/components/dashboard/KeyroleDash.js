@@ -7,6 +7,9 @@ import { Link, NavLink } from "react-router-dom";
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
 import './dash.css';
+import Srs from '../images/srs.png'
+import Consent from '../images/consent.jpg'
+import Duration from '../images/duration.jpg'
 
 class KeyroleDash extends Component {
   
@@ -35,18 +38,19 @@ class KeyroleDash extends Component {
         
         <div class="image-section">
       <div class="section-style">
-        <img src="https://source.unsplash.com/random/400x200" alt="" />
+        <img src={Srs} height="200" width="400" alt="" />
       <p>VIEW SRS</p>
       </div>
-      <Link to="/final">
+     
+      <Link to="/Premission">
       <div class="section-style">
-        <img src="https://source.unsplash.com/random/400x200" alt="" />
+        <img src={Consent} height="200" width="400" alt="" />
       <p>VIEW CONSENT</p>
       </div></Link>
           
       <Link to="/Timeduration">
       <div class="section-style">
-        <img src="https://source.unsplash.com/random/400x200" alt="" />
+        <img src={Duration} height="200" width="400" alt="" />
         <p>SELECT TIME DURATION</p>
       </div></Link>
     </div>

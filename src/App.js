@@ -14,7 +14,12 @@ import ClientDash from "./components/dashboard/ClientDash"
 import KeyroleDash from "./components/dashboard/KeyroleDash"
 import Roles from "./components/projects/Key"
 import Duration from "./components/Keyroels/Timeduration"
-import ClientLogin from "./components/auth/Clientlogin"
+import Client from "./components/auth/ClientLogin"
+import ImageUpload from "./client/srsupload"
+import Permission from "./consent/Premission"
+import Keylogin from "./components/auth/Keylogin"
+// import CreateProject from "./components/projects/CreateProject"
+
 
 
 class App extends Component {
@@ -28,7 +33,6 @@ class App extends Component {
           <Route path="/create" component={CreateProject} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/Clientlogin" component={ClientLogin} />
           <Route path="/Consent" component={Consent}/>
           <Route path="/Upload" component={Upload}/>
           <Route path="/final" component={Request}/>
@@ -36,7 +40,11 @@ class App extends Component {
           <Route path="/KeyroleDash" component={KeyroleDash}/>
           <Route path="/Key" component={Roles}/>
           <Route path="/Timeduration" component={Duration}/>
-
+          <Route path="/ClientLogin" component={Client}/>
+          <Route path="/srsupload" component={ImageUpload}/>
+          <Route path="/Premission" component={Permission}/>
+          <Route path="/Keylogin" component={Keylogin}/>
+          <Route path="/CreateProject" component={CreateProject}/>
         </Switch>
       </Router>
     );

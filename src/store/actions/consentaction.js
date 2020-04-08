@@ -29,3 +29,19 @@ export const createConsent = (project, history) => (
       });
   };
   
+
+  export const getConsents = () => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+      const firestore = getFirestore();
+      firestore.collection('projects').get().then(result => {
+        let data = [];
+        result.docs.forEach(doc => {
+          data.push(doc.data())
+        });
+        //console.log("DATA----->", data)÷
+        dispatch({ type: 'GET_CONSENTS', payload: data })
+      }).catch(err => {
+        console.log("Error found---->", err)
+      })
+    }
+  }

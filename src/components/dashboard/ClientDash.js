@@ -15,7 +15,7 @@ class ClientDash extends Component {
   
   render() {
     const { projects, auth, notifications } = this.props;
-    if (!auth.uid) return <Redirect to='/signin' /> 
+    if (!auth.uid) return <Redirect to='/ClientLogin' /> 
     return (
       <div className="dashboard container my-3">
         <div className="row">
@@ -37,20 +37,21 @@ class ClientDash extends Component {
         </Link> */}
         
         <div class="image-section">
+        <Link to="/srsupload">
       <div class="section-style">
         <img src={Upload} height="200" width="400" alt="" />
       <p>UPLOAD SRS</p>
-      </div>
-      <Link to="/final">
+      </div></Link>
+      
       <div class="section-style">
         <img src={Dates} width="400" height="200" alt="" />
       <p>VIEW DATE</p>
-      </div></Link>
-          
+      </div>
+      <Link to="/final">   
       <div class="section-style">
         <img src={Accept} height="200" width="400" alt="" />
         <p>ACCEPT/REJECT</p>
-      </div>
+      </div></Link>
     </div>
           </div>
         </div>

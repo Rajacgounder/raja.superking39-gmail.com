@@ -6,7 +6,6 @@ import { Redirect } from 'react-router-dom';
 
 class CreateProject extends Component {
   state = {
-    title: "",
     content: "",
   };
 
@@ -26,21 +25,8 @@ class CreateProject extends Component {
     if (!auth.uid) return <Redirect to='/signin' /> 
     return (
       <div className="container my-5">
-        <h1>Create new project</h1>
+        <h1>Create new Consent</h1>
         <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              className="form-control"
-              id="title"
-              onChange={this.handleChange}
-              value={this.state.email}
-              aria-describedby="titleHelp"
-              placeholder="Enter title"
-              required
-            />
-          </div>
           <div className="form-group">
             <label htmlFor="content">Content</label>
             <textarea

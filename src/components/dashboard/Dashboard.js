@@ -47,11 +47,11 @@ class Dashboard extends Component {
         <img src={Srs} height="200" width="400" alt="SRS" />
       <p>Client SRS</p>
       </div></Link>
-      <Link to="/final">
+      
       <div class="section-style">
         <img src={Profile} height="200" width="400" alt="" />
       <p>View Profile</p>
-      </div></Link>
+      </div>
         <Link t0="/Key">
       <div class="section-style">
         <img src={Key} height="200" width="400" alt="" />
@@ -60,7 +60,7 @@ class Dashboard extends Component {
     </div>
 
     <div class="image-section">
-    <Link to="/Consent">
+    <Link to="/CreateProject">
       <div class="section-style">
         <img src={Consent} height="200" width="400" alt="" />
         <p>Consent</p>

@@ -29,7 +29,6 @@ class SignUp extends Component {
       <div className="container my-5">
         <div className="signup-header my-5">
           <h1>Sign up</h1>
-          <h6>Penta gives you everything you need to stay in sync, hit deadlines, and reach your goals.</h6>
           <small className="text-muted">Registartion is easy and free.</small>
         </div>
         <form onSubmit={this.handleSubmit}>
@@ -80,7 +79,52 @@ class SignUp extends Component {
               value={this.state.lastName}
               placeholder="Last name"
             />
-          </div>
+            </div>
+            {/* <div className="form-group">
+            <label htmlFor="designation">Designation</label>
+            <input
+              type="text"
+              className="form-control"
+              id="designation"
+              onChange={this.handleChange}
+              value={this.state.designation}
+              placeholder="Designation"
+            />
+            </div>
+            <div className="form-group">
+            <label htmlFor="salary">Salary</label>
+            <input
+              type="number"
+              className="form-control"
+              id="salary"
+              onChange={this.handleChange}
+              value={this.state.salary}
+              placeholder="Salary"
+            />
+            </div>
+            <div className="form-group">
+            <label htmlFor="phonenum">Mobile Number</label>
+            <input
+              type="number"
+              className="form-control"
+              id="phonenum"
+              onChange={this.handleChange}
+              value={this.state.phonenum}
+              placeholder="Mobile number"
+              pattern="[7-9]{1}[0-9]{9}"
+            />
+            </div>
+            <div className="form-group">
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              className="form-control"
+              id="address"
+              onChange={this.handleChange}
+              value={this.state.address}
+              placeholder="Address"
+            />
+          </div> */}
           {authError ? <div className="text-danger my-2">{authError}</div> : null}
           <button type="submit" className="btn btn-dark">
             sign up

@@ -22,12 +22,11 @@ class ClientLogin extends Component {
 
   render() {
     const { authError, auth } = this.props;
-    if (auth.uid) return <Redirect to="/" />;
+    if (auth.uid) return <Redirect to="/ClientDash" />;
     return (
       <div className="container">
         <div className="login-header my-5">
-          <h1>Client Login</h1>
-          <h6></h6>
+          <h1> Key Role Login</h1>
         </div>
 
         <form onSubmit={this.handleSubmit}>

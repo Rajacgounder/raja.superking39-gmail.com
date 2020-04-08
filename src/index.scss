@@ -3,6 +3,7 @@ body {
     nav {
         margin: 0;
         padding: 1em 0!important;
+        background-color:#90CAF9;
         .navbar-brand {
             font-size: 100%;
         }
@@ -15,9 +16,7 @@ body {
             }
         }
     }
-    .card {
-      
-    }
+
     .project-link {
         &:hover {
             text-decoration: none;

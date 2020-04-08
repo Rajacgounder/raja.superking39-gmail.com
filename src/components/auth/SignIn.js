@@ -27,7 +27,6 @@ class SignIn extends Component {
       <div className="container">
         <div className="login-header my-5">
           <h1>Login</h1>
-          <h6>Penta is the easiest way to manage team projects and tasks.</h6>
         </div>
 
         <form onSubmit={this.handleSubmit}>
