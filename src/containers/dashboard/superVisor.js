@@ -7,15 +7,15 @@ import { Link, NavLink } from "react-router-dom";
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
 import './dash.css';
-import Upload from '../images/upload.png'
-import Dates from '../images/date.png'
-import Accept from '../images/reject.jpg'
+import Srs from '../../assets/images/srs.png'
+import Consent from '../../assets/images/consent.jpg'
+import Duration from '../../assets/images/duration.jpg'
 
-class ClientDash extends Component {
+class SupervisorDash extends Component {
   
   render() {
     const { projects, auth, notifications } = this.props;
-    if (!auth.uid) return <Redirect to='/ClientLogin' /> 
+    if (!auth.uid) return <Redirect to='/signin' /> 
     return (
       <div className="dashboard container my-3">
         <div className="row">
@@ -37,20 +37,21 @@ class ClientDash extends Component {
         </Link> */}
         
         <div class="image-section">
-        <Link to="/srsupload">
       <div class="section-style">
-        <img src={Upload} height="200" width="400" alt="" />
-      <p>UPLOAD SRS</p>
-      </div></Link>
-      
-      <div class="section-style">
-        <img src={Dates} width="400" height="200" alt="" />
-      <p>VIEW DATE</p>
+        <img src={Srs} height="200" width="400" alt="" />
+      <p>VIEW SRS</p>
       </div>
-      <Link to="/final">   
+     
+      <Link to="/Premission">
       <div class="section-style">
-        <img src={Accept} height="200" width="400" alt="" />
-        <p>ACCEPT/REJECT</p>
+        <img src={Consent} height="200" width="400" alt="" />
+      <p>VIEW CONSENT</p>
+      </div></Link>
+          
+      <Link to="/Timeduration">
+      <div class="section-style">
+        <img src={Duration} height="200" width="400" alt="" />
+        <p>SELECT TIME DURATION</p>
       </div></Link>
     </div>
           </div>
@@ -66,4 +67,4 @@ const mapStateToProps = state => ({
   notifications: state.firestore.ordered.notifications
 })
 
-export default compose(connect(mapStateToProps),firestoreConnect([{collection: 'projects', orderBy: ['createdAt', 'desc']},{collection: 'notifications', limit:5, orderBy:['time', 'desc']}]))(ClientDash);
+export default compose(connect(mapStateToProps),firestoreConnect([{collection: 'projects', orderBy: ['createdAt', 'desc']},{collection: 'notifications', limit:5, orderBy:['time', 'desc']}]))(SupervisorDash);

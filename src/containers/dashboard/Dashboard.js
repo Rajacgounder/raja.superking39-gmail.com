@@ -7,12 +7,12 @@ import { Link, NavLink } from "react-router-dom";
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
 import './dash.css';
-import Srs from '../images/srs.png'
-import Consent from '../images/consent.jpg'
-import Notification from '../images/notification.jpg'
-import Profile from '../images/profile.png'
-import Key from '../images/key.jpg'
-import Keyrole from '../images/viewkey.jpg'
+import Srs from '../../assets/images/srs.png'
+import Consent from '../../assets/images/consent.jpg'
+import Notification from '../../assets/images/notification.jpg'
+import Profile from '../../assets/images/profile.png'
+import Key from '../../assets/images/key.jpg'
+import Keyrole from '../../assets/images/viewkey.jpg'
 
 
 
@@ -52,7 +52,7 @@ class Dashboard extends Component {
         <img src={Profile} height="200" width="400" alt="" />
       <p>View Profile</p>
       </div>
-        <Link to="/Clientshow">
+        <Link to="/SupervisorShow">
       <div class="section-style">
         <img src={Key} height="200" width="400" alt="" />
         <p>View Key Roles</p>
@@ -66,7 +66,7 @@ class Dashboard extends Component {
         <p>Consent</p>
       </div></Link>
 
-        <Link to="/Viewkeyrole">
+        <Link to="/ViewSupervisor">
       <div class="section-style">
         <img src={Keyrole} height="200" width="400" alt="" />
         <p>Select Roles</p>
@@ -86,9 +86,10 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  projects: state.firestore.ordered.projects,
+  // projects: state.firestore.ordered.projects,
   auth: state.firebase.auth,
-  notifications: state.firestore.ordered.notifications
+  // notifications: state.firestore.ordered.notifications
 })
 
-export default compose(connect(mapStateToProps),firestoreConnect([{collection: 'projects', orderBy: ['createdAt', 'desc']},{collection: 'notifications', limit:5, orderBy:['time', 'desc']}]))(Dashboard);
+// export default compose(connect(mapStateToProps),firestoreConnect([{collection: 'projects', orderBy: ['createdAt', 'desc']},{collection: 'notifications', limit:5, orderBy:['time', 'desc']}]))(Dashboard);
+export default compose(connect(mapStateToProps))(Dashboard);

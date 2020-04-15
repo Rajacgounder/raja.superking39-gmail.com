@@ -7,7 +7,7 @@ class Create extends Component {
 
   constructor() {
     super();
-    this.ref = firebase.firestore().collection('keys');
+    this.ref = firebase.firestore().collection('super_visors');
     this.state = {
       name: '',
       emailid: '',
@@ -66,7 +66,7 @@ class Create extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to="/Clientshow" class="btn btn-primary">KEy roles</Link></h4>
+            <h4><Link to="/ViewSupervisor" class="btn btn-primary">KEy roles</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="name">Name:</label>
