@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signIn } from "../../store/actions/keyaction";
+import { signIn } from "../../store/actions/keyAction";
 import { Redirect } from "react-router-dom";
 
 class Keylogin extends Component {

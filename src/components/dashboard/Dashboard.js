@@ -52,7 +52,7 @@ class Dashboard extends Component {
         <img src={Profile} height="200" width="400" alt="" />
       <p>View Profile</p>
       </div>
-        <Link t0="/Key">
+        <Link to="/Clientshow">
       <div class="section-style">
         <img src={Key} height="200" width="400" alt="" />
         <p>View Key Roles</p>
@@ -66,15 +66,16 @@ class Dashboard extends Component {
         <p>Consent</p>
       </div></Link>
 
-        <Link to="/KeyroleDash">
+        <Link to="/Viewkeyrole">
       <div class="section-style">
         <img src={Keyrole} height="200" width="400" alt="" />
         <p>Select Roles</p>
       </div></Link>
+      <Link to="/KeyroleDash">
       <div class="section-style">
         <img src={Notification} height="200" width="400" alt="" />
         <p>Notifications</p>
-      </div>
+      </div></Link>
   
     </div>
           </div>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {storage} from '../config/fbConfig';
+import {storage} from '../../config/fbConfig';
 import './upload.css'
 
 class ImageUpload extends Component {

@@ -7,20 +7,25 @@ import ProjectDetails from "./components/projects/ProjectDetails";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import CreateProject from "./components/projects/CreateProject";
-import Consent from "./consent/Consent";
-import Upload from "./upload/Upload";
-import Request from "./client/final"
+import Consent from "./components/consent/Consent";
+//import Upload from "./upload/Upload";
+import Request from "./components/client/final"
 import ClientDash from "./components/dashboard/ClientDash"
 import KeyroleDash from "./components/dashboard/KeyroleDash"
 import Roles from "./components/projects/Key"
 import Duration from "./components/Keyroels/Timeduration"
 import Client from "./components/auth/ClientLogin"
-import ImageUpload from "./client/srsupload"
-import Permission from "./consent/Premission"
+import ImageUpload from "./components/client/srsupload"
+import Permission from "./components/consent/Premission"
 import Keylogin from "./components/auth/Keylogin"
+import Show from "./components/Keyroels/Show";
+import Edit from './components/Keyroels/Edit';
+import Create from './components/Keyroels/Createkey';
+import Clientshow from './components/Keyroels/Clientshow'
+import Keyshow from './components/Keyroels/Viewkeyrole'
+
+
 // import CreateProject from "./components/projects/CreateProject"
-
-
 
 class App extends Component {
   render() {
@@ -34,7 +39,7 @@ class App extends Component {
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/Consent" component={Consent}/>
-          <Route path="/Upload" component={Upload}/>
+      {/* <Route path="/Upload" component={Upload}/> */}
           <Route path="/final" component={Request}/>
           <Route path="/ClientDash" component={ClientDash}/>
           <Route path="/KeyroleDash" component={KeyroleDash}/>
@@ -45,6 +50,11 @@ class App extends Component {
           <Route path="/Premission" component={Permission}/>
           <Route path="/Keylogin" component={Keylogin}/>
           <Route path="/CreateProject" component={CreateProject}/>
+          <Route exact path='/Clientshow' component={Clientshow} />
+          <Route path='/edit/:id' component={Edit} />
+        <Route path='/Createkey' component={Create} />
+        <Route path='/show/:id' component={Show} />
+        <Route exact path='/Viewkeyrole' component={Keyshow} />
         </Switch>
       </Router>
     );

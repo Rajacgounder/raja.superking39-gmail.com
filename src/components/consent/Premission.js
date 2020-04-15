@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-import { getConsents } from "../store/actions/consentaction";
+import { getConsents } from "../../store/actions/consentAction";
 
 class Premission extends  Component{
     componentDidMount() {
@@ -17,7 +17,7 @@ class Premission extends  Component{
                     )
                 }): <p>Loading...</p>}
                 <center>
-                <textarea className="consent" cols="120" rows="19" disabled>Terms and condition</textarea>
+               
                 <form>
                 <input type="checkbox" name="vehicle1" value="Bike"/>
                 <label for="vehicle1"> I accepted the terms and condition of the consent</label><br></br>
