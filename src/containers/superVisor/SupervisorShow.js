@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from '../../config/fbConfig';
 
-class Clientshow extends Component {
+class SupervisorShow extends Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('keys');
+    this.ref = firebase.firestore().collection('super_visors');
     this.unsubscribe = null;
     this.state = {
       keys: []
@@ -47,7 +47,7 @@ class Clientshow extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to="/Createkey" class="btn btn-primary">Add Key Roles</Link></h4>
+            <h4><Link to="/CreateSupervisor" class="btn btn-primary">Add Key Roles</Link></h4>
             <table class="table table-stripe">
               <thead>
                 <tr>
@@ -83,4 +83,4 @@ class Clientshow extends Component {
 }
 
 
-export default Clientshow;
+export default SupervisorShow;

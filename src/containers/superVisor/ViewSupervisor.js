@@ -5,7 +5,7 @@ import firebase from '../../config/fbConfig';
 class Keyshow extends Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('keys');
+    this.ref = firebase.firestore().collection('super_visors');
     this.unsubscribe = null;
     this.state = {
       keys: []
