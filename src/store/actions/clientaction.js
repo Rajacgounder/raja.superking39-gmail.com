@@ -1,3 +1,4 @@
+//action created for clients
 export const signIn = credentials => (dispatch, getState, { getFirebase }) => {
   const firebase = getFirebase();
   firebase
