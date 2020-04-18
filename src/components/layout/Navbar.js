@@ -4,20 +4,29 @@ import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 import { connect } from "react-redux";
 
-const Navbar = props => {
-  const { auth, profile } = props;
-  const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
+const Navbar = (props) => {
+  const { auth, profile, superVisorAuthState } = props;
+  let superVisorAuthL =
+    JSON.parse(localStorage.getItem("superVisorAuth")) || [];
+  const links =
+    auth.uid ||
+    (superVisorAuthState.length && superVisorAuthState[0].id) ||
+    (superVisorAuthL.length && superVisorAuthL[0].id) ? (
+      <SignedInLinks profile={profile} />
+    ) : (
+      <SignedOutLinks />
+    );
   return (
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
       <div className="container">
-      <Link to="/" className="navbar-brand ml-3 ml-md-0">
-          Software Project Duration Estimation Tool <i className="text-danger  mx-1"></i>
+        <Link to="/" className="navbar-brand ml-3 ml-md-0">
+          Software Project Duration Estimation Tool{" "}
+          <i className="text-danger  mx-1"></i>
         </Link>
         <button
           class="navbar-toggler"
           type="button"
           data-toggle="collapse"
-          
           data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
@@ -33,11 +42,12 @@ const Navbar = props => {
     </nav>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   console.log(state);
   return {
     auth: state.firebase.auth,
-    profile: state.firebase.profile
+    profile: state.firebase.profile,
+    superVisorAuthState: state.auth.superVisorAuth,
   };
 };
 export default connect(mapStateToProps)(Navbar);
