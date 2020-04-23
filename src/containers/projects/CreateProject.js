@@ -23,6 +23,7 @@ class CreateProject extends Component {
   componentDidMount() {
     this.props.getConsents();
   }
+  
 
   render() {
     const { auth, loading } = this.props;
@@ -49,9 +50,11 @@ class CreateProject extends Component {
           <h1>
             <center>Consent Form</center>
           </h1>
+          
           {consents.length > 0 ? (
             consents.map((consent) => {
               return <p>{consent.content}</p>;
+              
             })
           ) : (
             <p>Loading...</p>

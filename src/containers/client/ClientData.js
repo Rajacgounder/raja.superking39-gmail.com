@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from '../../config/fbConfig';
 
-class Keyshow extends Component {
+class ClientData extends Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('super_visors');
+    this.ref = firebase.firestore().collection('client');
     this.unsubscribe = null;
     this.state = {
       keys: []
@@ -15,7 +15,7 @@ class Keyshow extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const keys = [];
     querySnapshot.forEach((doc) => {
-      const { name,emailid,password,phoneno,address,designation,experience } = doc.data();
+      const { name,emailid,password,phoneno,address,designation,companyname } = doc.data();
       keys.push({
         key: doc.id,
         doc, // DocumentSnapshot
@@ -25,7 +25,7 @@ class Keyshow extends Component {
         phoneno,
         address,
         designation,
-        experience,
+        companyname,
       });
     });
     this.setState({
@@ -43,35 +43,34 @@ class Keyshow extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-           <center>KEY ROLES</center>   
+           <center>Client</center>   
             </h3>
           </div>
           <div class="panel-body">
+            <h4><Link to="/CreateClient" class="btn btn-primary">Add Client Details</Link></h4>
             <table class="table table-stripe">
               <thead>
                 <tr>
                   <th>Name</th>
                   <th>Email-ID</th>
-                  {/* <th>Password</th>
+                  <th>Password</th>
                   <th>Phone Number</th>
-                  <th>Address</th> */}
+                  <th>Address</th>
                   <th>Designation</th>
-                  <th>Experience</th>
-                  <th>Send Consent</th>
+                  <th>companyname</th>
                 </tr>
               </thead>
               <tbody>
                 {this.state.keys.map(board =>
                   <tr>
-                    <td><Link to={`/show/${board.key}`}>{board.name}</Link></td>
+                    <td><Link to={`/show1/${board.key}`}>{board.name}</Link></td>
                     <td>{board.emailid}</td>
-                    {/* <td>{board.password}</td>
+                    <td>{board.password}</td>
                     <td>{board.phoneno}</td>
-                    <td>{board.address}</td> */}
+                    <td>{board.address}</td>
                     <td>{board.designation}</td>
-                    <td>{board.experience}</td>
-                    <td></td>
-                    <td><button type="submit" className="btn btn-primary">Consent</button></td>
+                    <td>{board.companyname}</td>
+                    {/* <td><button type="submit" class="btn-primary">Consent</button></td> */}
                   </tr>
                 )}
               </tbody>
@@ -84,4 +83,4 @@ class Keyshow extends Component {
 }
 
 
-export default Keyshow;
+export default ClientData;

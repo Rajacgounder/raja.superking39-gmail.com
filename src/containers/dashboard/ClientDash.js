@@ -14,8 +14,13 @@ import Accept from '../../assets/images/reject.jpg'
 class ClientDash extends Component {
   
   render() {
-    const { projects, auth, notifications } = this.props;
-    if (!auth.uid) return <Redirect to='/ClientLogin' /> 
+    const { projects, auth, notifications,clientAuthState } = this.props;
+    let clientAuthL =
+      JSON.parse(localStorage.getItem("clientAuth")) || [];
+    if (!clientAuthState.length && !clientAuthL.length) {
+      return <Redirect to="/signin" />;
+    }
+    //if (!auth.uid) return <Redirect to='/ClientLogin' /> 
     return (
       <div className="dashboard container my-3">
         <div className="row">

@@ -79,6 +79,13 @@ class Dashboard extends Component {
                 </div>
               </Link>
             </div>
+            <div class="image-section">
+            <Link to="/ClientData">
+              <div class="section-style">
+                <img src={Notification} height="200" width="400" alt=""/>
+                <p>Client Profile</p>
+              </div></Link>
+            </div>
           </div>
         </div>
       </div>

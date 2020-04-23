@@ -14,7 +14,7 @@ import ClientDash from "./containers/dashboard/ClientDash";
 import SupervisorDash from "./containers/dashboard/superVisor";
 import Roles from "./containers/projects/Key";
 import Duration from "./containers/superVisor/Timeduration";
-import Client from "./containers/auth/ClientLogin";
+import Client from "./containers/auth/clientLogin";
 import ImageUpload from "./containers/client/srsupload";
 import Permission from "./containers/consent/Premission";
 import Keylogin from "./containers/auth/Keylogin";
@@ -24,6 +24,11 @@ import Create from "./containers/superVisor/CreateSupervisor";
 import SupervisorShow from "./containers/superVisor/SupervisorShow";
 import Keyshow from "./containers/superVisor/ViewSupervisor";
 import history from "./history";
+import ClientData from "./containers/client/ClientData"
+import CreateClient from "./containers/client/CreateClient"
+import ClientEdit from "./containers/client/EditClient"
+import ClientShow from "./containers/client/ClientShow"
+
 
 // import CreateProject from "./containers/projects/CreateProject"
 
@@ -45,7 +50,7 @@ class App extends Component {
           <Route path="/superVisor" component={SupervisorDash} />
           <Route path="/Key" component={Roles} />
           <Route path="/Timeduration" component={Duration} />
-          <Route path="/ClientLogin" component={Client} />
+          <Route path="/clientLogin" component={Client} />
           <Route path="/srsupload" component={ImageUpload} />
           <Route path="/Premission" component={Permission} />
           <Route path="/Keylogin" component={Keylogin} />
@@ -55,6 +60,10 @@ class App extends Component {
           <Route path="/CreateSupervisor" component={Create} />
           <Route path="/show/:id" component={Show} />
           <Route exact path="/ViewSupervisor" component={Keyshow} />
+          <Route exact path="/ClientData" component={ClientData} />
+          <Route path="/react/:id" component={ClientEdit} />
+          <Route path="/CreateClient" component={CreateClient} />
+          <Route path="/show1/:id" component={ClientShow} />
         </Switch>
       </Router>
     );

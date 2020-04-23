@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import firebase from '../../config/fbConfig';
 import { Link } from 'react-router-dom';
 
-class Show extends Component {
+class ClientShow extends Component {
 
   constructor(props) {
     super(props);
@@ -14,7 +14,7 @@ class Show extends Component {
   }
 
   componentDidMount() {
-    const ref = firebase.firestore().collection('super_visors').doc(this.props.match.params.id);
+    const ref = firebase.firestore().collection('client').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         this.setState({
@@ -29,9 +29,9 @@ class Show extends Component {
   }
 
   delete(id){
-    firebase.firestore().collection('super_visors').doc(id).delete().then(() => {
+    firebase.firestore().collection('client').doc(id).delete().then(() => {
       console.log("Document successfully deleted!");
-      this.props.history.push("/SupervisorShow")
+      this.props.history.push("/")
     }).catch((error) => {
       console.error("Error removing document: ", error);
     });
@@ -42,7 +42,7 @@ class Show extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4><Link to="/SupervisorShow">Key Role Data</Link></h4>
+          <h4><Link to="/ClientData">Client Data</Link></h4>
             <h3 class="panel-title">
               {this.state.board.name}
             </h3>
@@ -59,10 +59,10 @@ class Show extends Component {
               <dd>{this.state.board.address}</dd>
               <dt>Desigation:</dt>
               <dd>{this.state.board.designation}</dd>
-              <dt>Experience:</dt>
-              <dd>{this.state.board.experience}</dd>
+              <dt>companyname:</dt>
+              <dd>{this.state.board.companyname}</dd>
             </dl>
-            <Link to={`/edit/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
+            <Link to={`/react/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
             <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>
           </div>
         </div>
@@ -71,4 +71,4 @@ class Show extends Component {
   }
 }
 
-export default Show;
+export default ClientShow;

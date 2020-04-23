@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signIn } from "../../store/actions/clientAction";
+import { signIn } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom";
 
-class ClientLogin extends Component {
+class Client extends Component {
   state = {
     email: "",
     password: "",
@@ -19,14 +19,21 @@ class ClientLogin extends Component {
     e.preventDefault();
     this.props.signIn(this.state);
   };
+  componentDidUpdate(prevProps) {
+    if (this.props.clientAuthState !== prevProps.clientAuthState) {
+      if (this.props.clientAuthState.length) {
+        this.props.history.push("/ClientDash");
+      }
+    }
+  }
 
   render() {
     const { authError, auth } = this.props;
-    if (auth.uid) return <Redirect to="/ClientDash" />;
+    if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="container">
         <div className="login-header my-5">
-          <h1> Key Role Login</h1>
+          <h1>Client Login</h1>
         </div>
 
         <form onSubmit={this.handleSubmit}>
@@ -65,9 +72,10 @@ class ClientLogin extends Component {
 const mapStateToProps = state => ({
   authError: state.auth.authError,
   auth: state.firebase.auth,
+  clientAuthState: state.auth.clientAuth,
 });
 
 export default connect(
   mapStateToProps,
   { signIn }
-)(ClientLogin);
+)(Client);

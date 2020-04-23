@@ -49,6 +49,7 @@ class Premission extends Component {
               id="accepted"
               name="terms"
               value="male"
+              required
               onChange={(e) => {
                 this.setState({ isAccepted: true });
               }}
