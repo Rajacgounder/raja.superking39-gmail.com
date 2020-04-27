@@ -68,7 +68,11 @@ class ClientDash extends Component {
 const mapStateToProps = state => ({
   projects: state.firestore.ordered.projects,
   auth: state.firebase.auth,
-  notifications: state.firestore.ordered.notifications
+  notifications: state.firestore.ordered.notifications,
+  clientAuthState: state.auth.clientAuth,
 })
 
-export default compose(connect(mapStateToProps),firestoreConnect([{collection: 'projects', orderBy: ['createdAt', 'desc']},{collection: 'notifications', limit:5, orderBy:['time', 'desc']}]))(ClientDash);
+export default compose(connect(mapStateToProps),firestoreConnect([
+  {collection: 'projects', orderBy: ['createdAt', 'desc']},
+  {collection: 'notifications', limit:5, orderBy:['time', 'desc']}]))
+  (ClientDash);

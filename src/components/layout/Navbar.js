@@ -5,17 +5,23 @@ import SignedOutLinks from "./SignedOutLinks";
 import { connect } from "react-redux";
 
 const Navbar = (props) => {
-  const { auth, profile, superVisorAuthState } = props;
+  const { auth, profile, superVisorAuthState,clientAuthState } = props;
   let superVisorAuthL =
     JSON.parse(localStorage.getItem("superVisorAuth")) || [];
+    let clientAuthL =
+    JSON.parse(localStorage.getItem("clientAuth")) || [];
   const links =
     auth.uid ||
-    (superVisorAuthState.length && superVisorAuthState[0].id) ||
-    (superVisorAuthL.length && superVisorAuthL[0].id) ? (
+    ((superVisorAuthState.length && superVisorAuthState[0].id) ||
+    (superVisorAuthL.length && superVisorAuthL[0].id)) || ((clientAuthState.length && clientAuthState[0].id) ||
+    (clientAuthL.length && clientAuthL[0].id)) ? (
       <SignedInLinks profile={profile} />
     ) : (
       <SignedOutLinks />
     );
+   
+  
+
   return (
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
       <div className="container">
@@ -38,6 +44,7 @@ const Navbar = (props) => {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           {links}
         </div>
+
       </div>
     </nav>
   );
@@ -48,6 +55,7 @@ const mapStateToProps = (state) => {
     auth: state.firebase.auth,
     profile: state.firebase.profile,
     superVisorAuthState: state.auth.superVisorAuth,
+    clientAuthState:state.auth.clientAuth,
   };
 };
 export default connect(mapStateToProps)(Navbar);

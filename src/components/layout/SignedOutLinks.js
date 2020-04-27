@@ -9,7 +9,6 @@ const SignedOutLinks = () => {
   <Dropdown.Toggle variant="primary" id="dropdown-basic">
     Login
   </Dropdown.Toggle>
-
   <Dropdown.Menu>
     <Dropdown.Item href="/signin">Manger Login</Dropdown.Item>
     <Dropdown.Item href="/clientlogin">Client Login</Dropdown.Item>

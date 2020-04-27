@@ -70,8 +70,8 @@ class Keyshow extends Component {
                     <td>{board.address}</td> */}
                     <td>{board.designation}</td>
                     <td>{board.experience}</td>
-                    <td></td>
                     <td><button type="submit" className="btn btn-primary">Consent</button></td>
+                    
                   </tr>
                 )}
               </tbody>

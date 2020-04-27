@@ -28,6 +28,8 @@ import ClientData from "./containers/client/ClientData"
 import CreateClient from "./containers/client/CreateClient"
 import ClientEdit from "./containers/client/EditClient"
 import ClientShow from "./containers/client/ClientShow"
+// import Client from "./containers/auth/clientLogin"
+import ViewTeam from "./containers/superVisor/viewTeams"
 
 
 // import CreateProject from "./containers/projects/CreateProject"
@@ -64,6 +66,8 @@ class App extends Component {
           <Route path="/react/:id" component={ClientEdit} />
           <Route path="/CreateClient" component={CreateClient} />
           <Route path="/show1/:id" component={ClientShow} />
+          <Route path="/viewTeams" component={ViewTeam}/>
+         
         </Switch>
       </Router>
     );

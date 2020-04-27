@@ -27,9 +27,9 @@ export const signIn = (payload) => (
       console.log(userInfo);
       if (userInfo.length) {
         dispatch({ type: "LOGIN_SUCCESS_CLIENT", payload: userInfo });
-        let superVisorAuth =
+        let clientAuth =
           JSON.parse(localStorage.getItem("clientAuth")) || [];
-        superVisorAuth.push(userInfo[0]);
+        clientAuth.push(userInfo[0]);
         localStorage.setItem("clientAuth", JSON.stringify(clientAuth));
         // history.push("/superVisor");
       } else {

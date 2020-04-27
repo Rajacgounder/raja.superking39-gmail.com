@@ -23,7 +23,7 @@ class ImageUpload extends Component {
   }
   handleUpload = () => {
       const {image} = this.state;
-      const uploadTask = storage.ref(`images/${image.name}`).put(image);
+      const uploadTask = storage.ref(`document/${image.name}`).put(image);
       uploadTask.on('state_changed', 
       (snapshot) => {
         // progrss function ....
@@ -36,7 +36,7 @@ class ImageUpload extends Component {
       }, 
     () => {
         // complete function ....
-        storage.ref('images').child(image.name).getDownloadURL().then(url => {
+        storage.ref('document').child(image.name).getDownloadURL().then(url => {
             console.log(url);
             this.setState({url});
         })

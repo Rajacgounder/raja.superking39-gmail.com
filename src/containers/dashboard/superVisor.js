@@ -28,13 +28,13 @@ class SupervisorDash extends Component {
       disabledStylesForTimeDuration = { pointerEvents: "none", opacity: 0.7 };
     }
 
-    let disabledStylesForConsent = {};
-    if (
-      superVisorAuthL.length &&
-      superVisorAuthL[0].hasSelectedTermsAndConditions
-    ) {
-      disabledStylesForConsent = { pointerEvents: "none", opacity: 0.7 };
-    }
+    // let disabledStylesForConsent = {};
+    // if (
+    //   superVisorAuthL.length &&
+    //   superVisorAuthL[0].hasSelectedTermsAndConditions
+    // ) {
+    //   disabledStylesForConsent = { pointerEvents: "none", opacity: 0.7 };
+    // }
 
     return (
       <div className="dashboard container my-3">
@@ -62,7 +62,8 @@ class SupervisorDash extends Component {
                 <p>VIEW SRS</p>
               </div>
 
-              <div style={disabledStylesForConsent}>
+              {/* <div style={disabledStylesForConsent}> */}
+              <div>
                 <Link to="/Premission">
                   <div class="section-style">
                     <img src={Consent} height="200" width="400" alt="" />
