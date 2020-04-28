@@ -13,6 +13,7 @@ import Notification from "../../assets/images/notification.jpg";
 import Profile from "../../assets/images/profile.png";
 import Key from "../../assets/images/key.jpg";
 import Keyrole from "../../assets/images/viewkey.jpg";
+import Team from "../../assets/images/viewTeam.png";
 
 class Dashboard extends Component {
   render() {
@@ -72,12 +73,24 @@ class Dashboard extends Component {
                   <p>Select Roles</p>
                 </div>
               </Link>
-              <Link to="/superVisor">
+              <Link to="/ClientDash">
                 <div class="section-style">
                   <img src={Notification} height="200" width="400" alt="" />
                   <p>Notifications</p>
                 </div>
               </Link>
+            </div>
+            <div class="image-section">
+            <Link to="/ClientData">
+              <div class="section-style">
+                <img src={Notification} height="200" width="400" alt=""/>
+                <p>Client Profile</p>
+              </div></Link>
+              <Link to="/viewTeams">
+              <div class="section-style">
+                <img src={Team} height="200" width="400" alt=""/>
+                <p>View Teams</p>
+              </div></Link>
             </div>
           </div>
         </div>

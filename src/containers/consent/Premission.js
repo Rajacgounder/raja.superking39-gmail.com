@@ -12,6 +12,13 @@ class Premission extends Component {
   componentDidMount() {
     this.props.getConsents();
   }
+  constructor(props) {
+    super(props)
+    
+    this.state = {
+      isButtonDisabled: false
+    }
+  }
 
   handleSubmit = () => {
     let superVisorAuthL =
@@ -22,6 +29,7 @@ class Premission extends Component {
     );
     this.props.history.push("/superVisor");
   };
+
 
   render() {
     const { consents } = this.props;
@@ -49,6 +57,7 @@ class Premission extends Component {
               id="accepted"
               name="terms"
               value="male"
+              required
               onChange={(e) => {
                 this.setState({ isAccepted: true });
               }}
@@ -70,7 +79,7 @@ class Premission extends Component {
               I do not accept terms and conditions of consents
             </label>
             <br />
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" disabled={this.state.isButtonDisabled}>
               Submit
             </button>
           </form>

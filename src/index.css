@@ -1,17 +1,24 @@
 body nav {
-  margin: 0;
+  margin-top: 0;
+  margin: auto;
   padding: 1em 0 !important;
 }
 
 body nav .navbar-brand {
   font-size: 200%;
+
 }
 
 body nav .navbar-nav li .nav-link {
   font-size: 1.5em;
+  margin-top: auto;
 }
 
 body .project-link:hover {
   text-decoration: none;
+}
+  
+nav{
+  margin-top: 0px;
 }
 /*# sourceMappingURL=index.css.map */

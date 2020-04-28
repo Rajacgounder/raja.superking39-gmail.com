@@ -26,7 +26,7 @@ class SignIn extends Component {
     return (
       <div className="container">
         <div className="login-header my-5">
-          <h1>Login</h1>
+          <h1>Manager Login</h1>
         </div>
 
         <form onSubmit={this.handleSubmit}>

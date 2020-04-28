@@ -48,6 +48,7 @@ class SupervisorShow extends Component {
           </div>
           <div class="panel-body">
             <h4><Link to="/CreateSupervisor" class="btn btn-primary">Add Key Roles</Link></h4>
+            <h4><Link to="" class="btn btn-primary  float-right" >Create Teams </Link></h4>
             <table class="table table-stripe">
               <thead>
                 <tr>
@@ -70,6 +71,7 @@ class SupervisorShow extends Component {
                     <td>{board.address}</td>
                     <td>{board.designation}</td>
                     <td>{board.experience}</td>
+                    <td><input type="checkbox" name="create"></input></td>
                     {/* <td><button type="submit" class="btn-primary">Consent</button></td> */}
                   </tr>
                 )}
