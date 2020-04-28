@@ -12,7 +12,7 @@ class Homepage extends Component{
     if (!auth.uid) return <Redirect to='/signin' /> 
         return(
             <div className="home">
-                <img src=""></img>
+               <h1>Welcome to Home PAge</h1>
             </div>
         )
     }

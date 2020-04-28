@@ -6,6 +6,7 @@ class ViewTeam extends Component{
         return(
             <div className="team">
             <h4><center>View Teams</center></h4>
+            <button class="btn btn-primary">Send Consent</button>
             <table>
                 <tbody>
                     <tr>

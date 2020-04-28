@@ -30,6 +30,7 @@ import ClientEdit from "./containers/client/EditClient"
 import ClientShow from "./containers/client/ClientShow"
 // import Client from "./containers/auth/clientLogin"
 import ViewTeam from "./containers/superVisor/viewTeams"
+// import Homepage from "./containers/dashboard/Homepage"
 
 
 // import CreateProject from "./containers/projects/CreateProject"
@@ -40,6 +41,7 @@ class App extends Component {
       <Router history={history}>
         <Navbar />
         <Switch>
+        {/* <Route exact path="/" component={Homepage}/> */}
           <Route exact path="/" component={Dashboard} />
           <Route path="/project/:id" component={ProjectDetails} />
           <Route path="/create" component={CreateProject} />
