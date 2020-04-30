@@ -31,6 +31,7 @@ import ClientShow from "./containers/client/ClientShow"
 // import Client from "./containers/auth/clientLogin"
 import ViewTeam from "./containers/superVisor/viewTeams"
 // import Homepage from "./containers/dashboard/Homepage"
+import Time from "./containers/superVisor/Time"
 
 
 // import CreateProject from "./containers/projects/CreateProject"
@@ -69,6 +70,7 @@ class App extends Component {
           <Route path="/CreateClient" component={CreateClient} />
           <Route path="/show1/:id" component={ClientShow} />
           <Route path="/viewTeams" component={ViewTeam}/>
+          <Route path="/Time" component={Time}/>
          
         </Switch>
       </Router>

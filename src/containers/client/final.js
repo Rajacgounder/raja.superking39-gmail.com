@@ -49,19 +49,22 @@ class Request extends Component{
       };
 
     render(){
-        // const{
-        //     accepted,
-        //     notclear,
-        //     rejected,
-        // }
+      const{
+        accepted,
+        notclear,
+        rejected,
+      }=this.state;
         return(
+         
+          <form onSubmit={this.onSubmit}>
             <center>
             <div class="container pt-4">
-                <button type="submit" id="one" class="btn btn-danger" onClick={this.state}>Rejected</button>
-                <button type="submit" id="two" class="btn btn-primary">Not Clear</button>
-                <button type="submit" id="three" class="btn btn-success">Accepted</button>
+                <button type="submit" id="one" class="btn btn-danger" value={accepted} onChange={this.onChange}>Rejected</button>
+                <button type="submit" id="two" value={notclear} class="btn btn-primary" onChange={this.onChange}>Not Clear</button>
+                <button type="submit" id="three" value={rejected} class="btn btn-success" onChange={this.onChange}>Accepted</button>
             </div>
             </center>
+            </form>
         )
     }
 }
