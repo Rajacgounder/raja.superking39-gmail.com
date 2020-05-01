@@ -8,7 +8,6 @@ class Show extends Component {
     super(props);
     this.state = {
       board: {},
-
       key: ''
     };
   }

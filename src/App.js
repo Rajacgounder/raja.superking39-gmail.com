@@ -32,6 +32,8 @@ import ClientShow from "./containers/client/ClientShow"
 import ViewTeam from "./containers/superVisor/viewTeams"
 // import Homepage from "./containers/dashboard/Homepage"
 import Time from "./containers/superVisor/Time"
+import Notification from "./containers/superVisor/Notification"
+import Times from "./containers/superVisor/Times"
 
 
 // import CreateProject from "./containers/projects/CreateProject"
@@ -71,7 +73,8 @@ class App extends Component {
           <Route path="/show1/:id" component={ClientShow} />
           <Route path="/viewTeams" component={ViewTeam}/>
           <Route path="/Time" component={Time}/>
-         
+          <Route path="/Notification" component={Notification}/>
+         <Route path="/Times" component={Times}/>
         </Switch>
       </Router>
     );

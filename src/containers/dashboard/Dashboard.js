@@ -46,11 +46,11 @@ class Dashboard extends Component {
                   <p>Client SRS</p>
                 </div>
               </Link>
-              <Link to="/Time">
+              <Link to="/Times">
               <div class="section-style">
                 <img src={Profile} height="200" width="400" alt="" />
-                <p>View Profile</p>
-              </div></Link>
+                <p>SET DURATION</p>
+              </div></Link> 
               <Link to="/SupervisorShow">
                 <div class="section-style">
                   <img src={Key} height="200" width="400" alt="" />
@@ -73,7 +73,7 @@ class Dashboard extends Component {
                   <p>Select Roles</p>
                 </div>
               </Link>
-              <Link to="/ClientDash">
+              <Link to="/Notification">
                 <div class="section-style">
                   <img src={Notification} height="200" width="400" alt="" />
                   <p>Notifications</p>

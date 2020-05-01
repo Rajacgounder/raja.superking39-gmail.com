@@ -16,6 +16,7 @@ constructor() {
       less: "",
       week: "",
       more: "",
+      pert:"",
       
     };
   }
@@ -32,20 +33,22 @@ constructor() {
       less,
       more,
       week,
+      pert,
       
     } = this.state;
-
     this.ref
       .add({
         less,
         more,
         week,
+        pert,
       })
       .then((docRef) => {
         this.setState({
             less: "",
             week: "",
             more: "",
+            pert:"",
         });
         this.props.history.push("/superVisor");
       })
