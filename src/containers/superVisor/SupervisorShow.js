@@ -12,13 +12,21 @@ class SupervisorShow extends Component {
       keys: []
     };
   }
-  handleCheck = (board) => {
-   firebase
+  // handleCheck = (board) => {
+  //  firebase
+  //     .firestore()
+  //     .collection('teams')
+  //     .doc(board.emailid)
+  //    .set({...board});
+  // }
+  handleCheck = ({doc, ...board}) => {
+    console.log("board", board)
+    firebase
       .firestore()
-      .collection('teams')
-      .doc(board.emailid)
-     .set(...board);
-  }
+      .collection("teams")
+      .doc(board.name)
+      .set(board);
+  };
 
   onChange = (e) => {
     const state = this.state;
@@ -102,7 +110,7 @@ class SupervisorShow extends Component {
           </div>
           <div class="panel-body">
             <h4><Link to="/CreateSupervisor" class="btn btn-primary">Add Key Roles</Link></h4>
-            <h4><button type="submit" class="btn btn-primary  float-right" >Create Teams</button></h4>
+            <h4><button type="submit" class="btn btn-primary  float-right" >Create Team</button></h4>
             <form onSubmit={this.onSubmit}>
             <table class="table table-stripe">
               <thead>
