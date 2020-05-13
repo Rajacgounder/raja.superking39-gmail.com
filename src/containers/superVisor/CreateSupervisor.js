@@ -138,7 +138,7 @@ class Create extends Component {
                   name="phoneno"
                   value={phoneno}
                   onChange={this.onChange}
-                  placeholder="9876543211"
+                  placeholder="phone no"
                   required
                   min="10"
                 />
