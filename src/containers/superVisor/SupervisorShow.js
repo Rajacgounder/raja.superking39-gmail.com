@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from '../../config/fbConfig';
 
+
 class SupervisorShow extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +12,59 @@ class SupervisorShow extends Component {
       keys: []
     };
   }
+  handleCheck = (board) => {
+   firebase
+      .firestore()
+      .collection('teams')
+      .doc(board.emailid)
+     .set(...board);
+  }
+
+  onChange = (e) => {
+    const state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const {
+      name,
+      emailid,
+      password,
+      phoneno,
+      address,
+      designation,
+      experience
+    } = this.state;
+
+    this.ref
+      .add({
+        name,
+        emailid,
+        password,
+        phoneno,
+        address,
+        designation,
+        experience
+      })
+      .then((docRef) => {
+        this.setState({
+          name: '',
+          emailid: '',
+          password: '',
+          phoneno: '',
+          address: '',
+          designation: '',
+          experience: ''
+        });
+        this.props.history.push('/Dashboard');
+      })
+      .catch((error) => {
+        console.error('Error adding document: ', error);
+      });
+  };
 
   onCollectionUpdate = (querySnapshot) => {
     const keys = [];
@@ -48,7 +102,8 @@ class SupervisorShow extends Component {
           </div>
           <div class="panel-body">
             <h4><Link to="/CreateSupervisor" class="btn btn-primary">Add Key Roles</Link></h4>
-            <h4><Link to="" class="btn btn-primary  float-right" >Create Teams </Link></h4>
+            <h4><button type="submit" class="btn btn-primary  float-right" >Create Teams</button></h4>
+            <form onSubmit={this.onSubmit}>
             <table class="table table-stripe">
               <thead>
                 <tr>
@@ -71,12 +126,13 @@ class SupervisorShow extends Component {
                     <td>{board.address}</td>
                     <td>{board.designation}</td>
                     <td>{board.experience}</td>
-                    <td><input type="checkbox" name="create"></input></td>
+                    <td><input type="checkbox" onChange={()=>this.handleCheck(board)} defaultChecked={this.state.checked}/></td>
                     {/* <td><button type="submit" class="btn-primary">Consent</button></td> */}
                   </tr>
                 )}
               </tbody>
             </table>
+            </form>
           </div>
         </div>
       </div>

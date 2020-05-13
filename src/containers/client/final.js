@@ -13,6 +13,7 @@ class Request extends Component{
           accepted:"Your project is been accepted",
           notclear:"Need some explanation about the time duration and send a detailed information",
           rejected:"Your project is been rejected",
+          reason:""
         };
       }
       onChange = (e) => {
@@ -27,6 +28,7 @@ class Request extends Component{
          accepted,
          notclear,
          rejected,
+         reason,
         } = this.state;
     
         this.ref
@@ -34,12 +36,14 @@ class Request extends Component{
         accepted,
          notclear,
          rejected,
+         reason,
           })
           .then((docRef) => {
             this.setState({
                 accepted:"Your project is been accepted",
                 notclear:"Need some explanation about the time duration and send a detailed information",
                 rejected:"Your project is been rejected",
+                reason:""
             });
             this.props.history.push("/ClientDash");
           })
@@ -53,12 +57,14 @@ class Request extends Component{
         accepted,
         notclear,
         rejected,
+        reason,
       }=this.state;
         return(
          
           <form onSubmit={this.onSubmit}>
             <center>
             <div class="container pt-4">
+                <textarea name="reason" rows="5" cols="50" placeholder="Please enter the reason" onChange={this.onChange} required></textarea><br/>
                 <button type="submit" id="one" class="btn btn-danger" value={accepted} onChange={this.onChange}>Rejected</button>
                 <button type="submit" id="two" value={notclear} class="btn btn-primary" onChange={this.onChange}>Not Clear</button>
                 <button type="submit" id="three" value={rejected} class="btn btn-success" onChange={this.onChange}>Accepted</button>

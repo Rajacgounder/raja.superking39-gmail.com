@@ -23,6 +23,7 @@ class ImageUpload extends Component {
   }
   handleUpload = () => {
       const {image} = this.state;
+      console.log(image);
       const uploadTask = storage.ref(`document/${image.name}`).put(image);
       uploadTask.on('state_changed', 
       (snapshot) => {
@@ -52,7 +53,8 @@ class ImageUpload extends Component {
     };
     return (
       <div style={style}>
-      <img src={this.state.url || 'http://via.placeholder.com/400x300'} alt="Uploaded Document" height="300" width="400"/>
+      {/* <img src={this.state.url || 'gs://tool-5981d.appspot.com'} alt="Uploaded Document" height="300" width="400"/> */}
+      <a href={this.state.url  || 'storage.googleapis.com/document'}/>
       <progress value={this.state.progress} max="100"/>
       <br/>
         <input type="file"  onChange={this.handleChange}/>

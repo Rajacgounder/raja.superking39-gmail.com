@@ -1,7 +1,56 @@
 import React,{Component} from "react";
 import { render } from "react-dom";
+import firebase from "../../config/fbConfig"
 
 class Times extends Component {
+  // constructor() {
+  //   super();
+  //   this.ref = firebase.firestore().collection("time");
+  //   this.state = {
+  //     less: "",
+  //     week: "",
+  //     more: "",
+  //     pert:"",
+      
+  //   };
+  // }
+  // onChange = (e) => {
+  //   const state = this.state;
+  //   state[e.target.name] = e.target.value;
+  //   this.setState(state);
+  // };
+
+  // onSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   const {
+  //     less,
+  //     more,
+  //     week,
+  //     pert,
+      
+  //   } = this.state;
+  //   this.ref
+  //     .add({
+  //       less,
+  //       more,
+  //       week,
+  //       pert,
+  //     })
+  //     .then((docRef) => {
+  //       this.setState({
+  //           less: "",
+  //           week: "",
+  //           more: "",
+  //           pert:"",
+  //       });
+  //       this.props.history.push("/superVisor");
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding document: ", error);
+  //     });
+  // };
+
   state = {
     rows: [{}]
   };
@@ -26,6 +75,9 @@ class Times extends Component {
       rows: [...this.state.rows, item]
     });
   };
+  handlesave = () =>{
+    
+  }
   handleRemoveRow = () => {
     this.setState({
       rows: this.state.rows.slice(0, -1)
@@ -37,6 +89,11 @@ class Times extends Component {
     this.setState({ rows })
   }
   render() {
+    const{
+      less,
+      more,
+      week,
+  }=this.state;
     return (
       <div>
         <div className="container">
@@ -72,50 +129,58 @@ class Times extends Component {
                       <td>
                         <input
                           type="number"
-                          name="mobile"
-                          value={this.state.rows[idx].less}
+                          name="less"
+                          //value={this.state.rows[idx].less}
                           onChange={this.handleChange(idx)}
+                          ref="less"
                           className="form-control"
                         />
                       </td>
                       <td>
                         <input
                           type="number"
-                          name="mobile"
-                          value={this.state.rows[idx].equal}
+                          name="equal"
+                          //value={this.state.rows[idx].equal}
                           onChange={this.handleChange(idx)}
+                          ref="equal"
                           className="form-control"
                         />
                       </td>
                       <td>
                         <input
                           type="number"
-                          name="mobile"
-                          value={this.state.rows[idx].more}
+                          name="more"
+                          // value={this.state.rows[idx].more}
                           onChange={this.handleChange(idx)}
+                          ref="more"
                           className="form-control"
                         />
                       </td>
                       <td>
                         <button
                           className="btn btn-outline-danger btn-sm"
-                          onClick={this.handleRemoveSpecificRow(idx)}
-                        >
+                          onClick={this.handleRemoveSpecificRow(idx)}>
                           Remove
                         </button>
                       </td>
                     </tr>
                   ))}
+                  <tr>
+                        <th><h5>Total</h5></th>
+                        <th><input type="number" min="4" name="less" value={less} style={{width: "200px",height:"38px",borderRadius:"10px"}} onChange={this.onChange}/></th>
+                        <th><input type="number" min="4" name="week" value={week} style={{width: "200px",height:"36px",borderRadius:"10px"}} onChange={this.onChange}/></th>
+                        <th><input type="number" min="4" name="more" value={more} style={{width: "200px",height:"36px",borderRadius:"10px"}} onChange={this.onChange}/></th>
+                    </tr>
                 </tbody>
               </table>
               <button onClick={this.handleAddRow} className="btn btn-primary">
-                Add Row
+                Add NEW TASK
               </button>
+              <button className="btn btn-info" style={{margin:"10px 50px"}} onClick={this.handlesave}>Save</button>
               <button
                 onClick={this.handleRemoveRow}
-                className="btn btn-danger float-right"
-              >
-                Delete Last Row
+                className="btn btn-danger float-right">
+                Delete Last TASK
               </button>
             </div>
           </div>

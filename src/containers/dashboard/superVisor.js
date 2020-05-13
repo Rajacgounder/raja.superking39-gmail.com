@@ -73,7 +73,7 @@ class SupervisorDash extends Component {
               </div>
 
               <div style={disabledStylesForTimeDuration}>
-                <Link to="/Timeduration">
+                <Link to="/Time">
                   <div class="section-style">
                     <img src={Duration} height="200" width="400" alt="" />
                     <p>SELECT TIME DURATION</p>

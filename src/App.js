@@ -34,6 +34,7 @@ import ViewTeam from "./containers/superVisor/viewTeams"
 import Time from "./containers/superVisor/Time"
 import Notification from "./containers/superVisor/Notification"
 import Times from "./containers/superVisor/Times"
+import ExamplePDFViewer from "./containers/client/viewFile"
 
 
 // import CreateProject from "./containers/projects/CreateProject"
@@ -75,6 +76,7 @@ class App extends Component {
           <Route path="/Time" component={Time}/>
           <Route path="/Notification" component={Notification}/>
          <Route path="/Times" component={Times}/>
+         <Route path="/viewFile" component={ExamplePDFViewer}/>
         </Switch>
       </Router>
     );

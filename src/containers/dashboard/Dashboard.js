@@ -40,9 +40,9 @@ class Dashboard extends Component {
         </Link> */}
 
             <div class="image-section">
-              <Link to="/ClientDash">
+              <Link to="/viewFile">
                 <div class="section-style">
-                  <img src={Srs} height="200" width="400" alt="SRS" />
+                  <img src={Srs} height="200" width="350" alt="SRS" />
                   <p>Client SRS</p>
                 </div>
               </Link>
@@ -62,7 +62,7 @@ class Dashboard extends Component {
             <div class="image-section">
               <Link to="/CreateProject">
                 <div class="section-style">
-                  <img src={Consent} height="200" width="400" alt="" />
+                  <img src={Consent} height="100" width="400" alt="" />
                   <p>Consent</p>
                 </div>
               </Link>

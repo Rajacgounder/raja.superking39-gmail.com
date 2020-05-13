@@ -14,7 +14,6 @@ class Duration extends Component{
         super();
         this.ref =firebase.firestore.Collection("timeduration");
        this.state = {
-           keys=[],
             totalValue: 0,
             duration: {},
             

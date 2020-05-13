@@ -25,8 +25,8 @@ const Navbar = (props) => {
   return (
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
       <div className="container">
-        <Link to="/" className="navbar-brand ml-3 ml-md-0">
-          Software Project Duration Estimation Tool{" "}
+        <Link to="#" className="navbar-brand ml-3 ml-md-0">
+          Software Project Duration Estimation Tool
           <i className="text-danger  mx-1"></i>
         </Link>
         <button

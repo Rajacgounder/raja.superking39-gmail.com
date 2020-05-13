@@ -18,7 +18,8 @@ class ClientDash extends Component {
     let clientAuthL =
       JSON.parse(localStorage.getItem("clientAuth")) || [];
     if (!clientAuthState.length && !clientAuthL.length) {
-      return <Redirect to="/signin" />;
+      return <Redirect to="/clientLogin" />;
+      // return <Redirect to="/signin" />;
     }
     //if (!auth.uid) return <Redirect to='/ClientLogin' /> 
     return (
@@ -58,7 +59,14 @@ class ClientDash extends Component {
         <p>ACCEPT/REJECT</p>
       </div></Link>
     </div>
+    <div class="image-section">
+        <Link to="/viewFile">
+      <div class="section-style">
+        <img src={Upload} height="200" width="400" alt="" />
+      <p>UPLOAD SRS</p>
+      </div></Link>
           </div>
+        </div>
         </div>
       </div>
     );
