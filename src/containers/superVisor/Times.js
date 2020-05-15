@@ -3,53 +3,53 @@ import { render } from "react-dom";
 import firebase from "../../config/fbConfig"
 
 class Times extends Component {
-  // constructor() {
-  //   super();
-  //   this.ref = firebase.firestore().collection("time");
-  //   this.state = {
-  //     less: "",
-  //     week: "",
-  //     more: "",
-  //     pert:"",
+  constructor() {
+    super();
+    this.ref = firebase.firestore().collection("time");
+    this.state = {
+      less: "",
+      week: "",
+      more: "",
+      pert:"",
       
-  //   };
-  // }
-  // onChange = (e) => {
-  //   const state = this.state;
-  //   state[e.target.name] = e.target.value;
-  //   this.setState(state);
-  // };
+    };
+  }
+  onChange = (e) => {
+    const state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  };
 
-  // onSubmit = (e) => {
-  //   e.preventDefault();
+  onSubmit = (e) => {
+    e.preventDefault();
 
-  //   const {
-  //     less,
-  //     more,
-  //     week,
-  //     pert,
+    const {
+      less,
+      more,
+      week,
+      pert,
       
-  //   } = this.state;
-  //   this.ref
-  //     .add({
-  //       less,
-  //       more,
-  //       week,
-  //       pert,
-  //     })
-  //     .then((docRef) => {
-  //       this.setState({
-  //           less: "",
-  //           week: "",
-  //           more: "",
-  //           pert:"",
-  //       });
-  //       this.props.history.push("/superVisor");
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error adding document: ", error);
-  //     });
-  // };
+    } = this.state;
+    this.ref
+      .add({
+        less,
+        more,
+        week,
+        pert,
+      })
+      .then((docRef) => {
+        this.setState({
+            less: "",
+            week: "",
+            more: "",
+            pert:"",
+        });
+        this.props.history.push("/superVisor");
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+  };
 
   state = {
     rows: [{}]
@@ -99,6 +99,7 @@ class Times extends Component {
         <div className="container">
           <div className="row clearfix">
             <div className="col-md-12 column">
+            <form onSubmit={this.onSubmit}>
               <table
                 className="table table-bordered table-hover"
                 id="tab_logic"
@@ -173,10 +174,11 @@ class Times extends Component {
                     </tr>
                 </tbody>
               </table>
+              </form>
               <button onClick={this.handleAddRow} className="btn btn-primary">
                 Add NEW TASK
               </button>
-              <button className="btn btn-info" style={{margin:"10px 50px"}} onClick={this.handlesave}>Save</button>
+              <button type="submit" className="btn btn-info" style={{margin:"10px 50px"}} >Save</button>
               <button
                 onClick={this.handleRemoveRow}
                 className="btn btn-danger float-right">

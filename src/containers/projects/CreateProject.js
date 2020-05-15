@@ -3,6 +3,7 @@ import { createProject } from "../../store/actions/projectActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { getConsents } from "../../store/actions/consentAction";
+import { Link } from 'react-router-dom';
 
 class CreateProject extends Component {
   state = {
@@ -60,9 +61,7 @@ class CreateProject extends Component {
             <p>Loading...</p>
           )}
 
-          <button type="submit" className="btn btn-dark" disabled={loading}>
-            Update
-          </button>
+           {/* <Link to={"/project/" + props.match.params.id + "/edit"}><button className="waves-effect btn right orange"><i className="material-icons left">mode_edit</i>Edit Consent</button></Link> */}
         </form>
       </div>
     );

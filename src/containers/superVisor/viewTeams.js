@@ -1,46 +1,79 @@
-import React,{Component} from 'react'
+import React,{Component} from 'react';
+import { Link } from 'react-router-dom';
+import firebase from '../../config/fbConfig';
+
 
 
 class ViewTeam extends Component{
-    render(){
-        return(
-            <div className="team">
-            <h4><center>View Teams</center></h4>
-            <button class="btn btn-primary">Send Consent</button>
-            <table style={{border: "5px solid"}}>
-                <tbody>
+    constructor(props) {
+        super(props);
+        this.ref = firebase.firestore().collection('teams');
+        this.unsubscribe = null;
+        this.state = {
+          keys: []
+        };
+      }
+    
+      onCollectionUpdate = (querySnapshot) => {
+        const keys = [];
+        querySnapshot.forEach((doc) => {
+          const { name,emailid,password,phoneno,address,designation,companyname,experience } = doc.data();
+          keys.push({
+            key: doc.id,
+            doc, // DocumentSnapshot
+            name,
+            emailid,
+            designation,
+            experience,
+          });
+        });
+        this.setState({
+          keys
+       });
+      }
+    
+      componentDidMount() {
+        this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+      }
+    
+      render() {
+        return (
+          <div class="container">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+               <center>Teams</center>   
+                </h3>
+              </div>
+              <div class="panel-body">
+                <h4><Link to="#" class="btn btn-primary">Send Consent</Link></h4>
+                <table class="table table-stripe">
+                  <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>emailId</th>
-                        <th>Designation</th>
-                        <th>Experience</th>
-                        <th>Consent</th>
+                      <th>Name</th>
+                      <th>Email-ID</th>
+                      <th>Designation</th>
+                      <th>Experience</th>
                     </tr>
-                    <tr>
-                    
-                        <th>Ram</th>
-                        <th>ram@gmail.com</th>
-                        <th>Designer</th>
-                        <th>4</th>
-                        <th rowSpan="4"><button class="btn btn-primary">Send Consent</button></th>
-                    </tr>
-                    <tr>
-                        <th>Arya</th>
-                        <th>Arya@gmail.com</th>
-                        <th>Developer</th>
-                        <th>3</th>
-                    </tr>
-                    <tr>
-                        <th>Raja</th>
-                        <th>raja@gmail.com</th>
-                        <th>HR</th>
-                        <th>1</th>
-                    </tr>
-            </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                    {this.state.keys.map(board =>
+                      <tr>
+                        <td>{board.name}</td>
+                        <td>{board.emailid}</td>
+                        <td>{board.designation}</td>
+                        <td>{board.experience}</td>
+                        {/* <td><button type="submit" class="btn-primary">Consent</button></td> */}
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
             </div>
-        )
+          </div>
+        );
+      }
     }
-}
+    
 
 export default ViewTeam;

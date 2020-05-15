@@ -12,6 +12,62 @@ class Keyshow extends Component {
     };
   }
 
+  handleCheck = ({doc, ...board}) => {
+    console.log("board", board)
+    firebase
+      .firestore()
+      .collection("teams")
+      .doc(board.name)
+      .set(board);
+  };
+
+  onChange = (e) => {
+    const state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const {
+      name,
+      emailid,
+      password,
+      phoneno,
+      address,
+      designation,
+      experience
+    } = this.state;
+
+    this.ref
+      .add({
+        name,
+        emailid,
+        password,
+        phoneno,
+        address,
+        designation,
+        experience
+      })
+      .then((docRef) => {
+        this.setState({
+          name: '',
+          emailid: '',
+          password: '',
+          phoneno: '',
+          address: '',
+          designation: '',
+          experience: ''
+        });
+        this.props.history.push('/Dashboard');
+      })
+      .catch((error) => {
+        console.error('Error adding document: ', error);
+      });
+  };
+  
+
   onCollectionUpdate = (querySnapshot) => {
     const keys = [];
     querySnapshot.forEach((doc) => {
@@ -47,6 +103,8 @@ class Keyshow extends Component {
             </h3>
           </div>
           <div class="panel-body">
+          <h4><button type="submit" class="btn btn-primary  float-right" >Create Team</button></h4>
+          <form onSubmit={this.onSubmit}>
             <table class="table table-stripe">
               <thead>
                 <tr>
@@ -57,7 +115,6 @@ class Keyshow extends Component {
                   <th>Address</th> */}
                   <th>Designation</th>
                   <th>Experience</th>
-                  <th>Send Consent</th>
                 </tr>
               </thead>
               <tbody>
@@ -70,12 +127,13 @@ class Keyshow extends Component {
                     <td>{board.address}</td> */}
                     <td>{board.designation}</td>
                     <td>{board.experience}</td>
-                    <td><button type="submit" className="btn btn-primary">Consent</button></td>
+                    <td><input type="checkbox" onChange={()=>this.handleCheck(board)} defaultChecked={this.state.checked}/></td>
                     
                   </tr>
                 )}
               </tbody>
             </table>
+            </form>
           </div>
         </div>
       </div>

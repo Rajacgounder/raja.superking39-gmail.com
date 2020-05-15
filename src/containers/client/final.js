@@ -119,9 +119,9 @@ const{
       <center>
       <div class="container pt-4">
           <textarea name="reason" rows="5" cols="50" placeholder="Please enter the reason" value={reason} onChange={this.onChange} required=""></textarea><br/>
-          <button type="submit" id="one" class="btn btn-danger" name="rejected" onClick={this.handleOnClick}>Rejected</button>
-          <button type="submit" id="two" class="btn btn-primary" name="notclear" onClick={this.handleOnClick}>Not Clear</button>
-          <button type="submit" id="three" class="btn btn-success" name="accepted" onClick={this.handleOnClick}>Accepted</button>
+          <button disabled={reason===""} type="submit" id="one" class="btn btn-danger" name="rejected" onClick={this.handleOnClick}>Rejected</button>
+          <button disabled={reason===""} type="submit" id="two" class="btn btn-primary" name="notclear" onClick={this.handleOnClick}>Not Clear</button>
+          <button disabled={reason===""} type="submit" id="three" class="btn btn-success" name="accepted" onClick={this.handleOnClick}>Accepted</button>
       </div>
       </center>
   )

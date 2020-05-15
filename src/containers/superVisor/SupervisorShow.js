@@ -19,60 +19,66 @@ class SupervisorShow extends Component {
   //     .doc(board.emailid)
   //    .set({...board});
   // }
-  handleCheck = ({doc, ...board}) => {
-    console.log("board", board)
-    firebase
-      .firestore()
-      .collection("teams")
-      .doc(board.name)
-      .set(board);
-  };
+  // handleRemoveSpecificRow = (idx) => () => {
+  //   const rows = [...this.state.rows]
+  //   rows.splice(idx, 1)
+  //   this.setState({ rows })
+  // }
 
-  onChange = (e) => {
-    const state = this.state;
-    state[e.target.name] = e.target.value;
-    this.setState(state);
-  };
+  // handleCheck = ({doc, ...board}) => {
+  //   console.log("board", board)
+  //   firebase
+  //     .firestore()
+  //     .collection("teams")
+  //     .doc(board.name)
+  //     .set(board);
+  // };
 
-  onSubmit = (e) => {
-    e.preventDefault();
+  // onChange = (e) => {
+  //   const state = this.state;
+  //   state[e.target.name] = e.target.value;
+  //   this.setState(state);
+  // };
 
-    const {
-      name,
-      emailid,
-      password,
-      phoneno,
-      address,
-      designation,
-      experience
-    } = this.state;
+  // onSubmit = (e) => {
+  //   e.preventDefault();
 
-    this.ref
-      .add({
-        name,
-        emailid,
-        password,
-        phoneno,
-        address,
-        designation,
-        experience
-      })
-      .then((docRef) => {
-        this.setState({
-          name: '',
-          emailid: '',
-          password: '',
-          phoneno: '',
-          address: '',
-          designation: '',
-          experience: ''
-        });
-        this.props.history.push('/Dashboard');
-      })
-      .catch((error) => {
-        console.error('Error adding document: ', error);
-      });
-  };
+  //   const {
+  //     name,
+  //     emailid,
+  //     password,
+  //     phoneno,
+  //     address,
+  //     designation,
+  //     experience
+  //   } = this.state;
+
+  //   this.ref
+  //     .add({
+  //       name,
+  //       emailid,
+  //       password,
+  //       phoneno,
+  //       address,
+  //       designation,
+  //       experience
+  //     })
+  //     .then((docRef) => {
+  //       this.setState({
+  //         name: '',
+  //         emailid: '',
+  //         password: '',
+  //         phoneno: '',
+  //         address: '',
+  //         designation: '',
+  //         experience: ''
+  //       });
+  //       this.props.history.push('/Dashboard');
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error adding document: ', error);
+  //     });
+  // };
 
   onCollectionUpdate = (querySnapshot) => {
     const keys = [];
@@ -98,6 +104,7 @@ class SupervisorShow extends Component {
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
+  
 
   render() {
     return (
@@ -110,7 +117,7 @@ class SupervisorShow extends Component {
           </div>
           <div class="panel-body">
             <h4><Link to="/CreateSupervisor" class="btn btn-primary">Add Key Roles</Link></h4>
-            <h4><button type="submit" class="btn btn-primary  float-right" >Create Team</button></h4>
+            {/* <h4><button type="submit" class="btn btn-primary  float-right" >Create Team</button></h4> */}
             <form onSubmit={this.onSubmit}>
             <table class="table table-stripe">
               <thead>
@@ -134,8 +141,8 @@ class SupervisorShow extends Component {
                     <td>{board.address}</td>
                     <td>{board.designation}</td>
                     <td>{board.experience}</td>
-                    <td><input type="checkbox" onChange={()=>this.handleCheck(board)} defaultChecked={this.state.checked}/></td>
-                    {/* <td><button type="submit" class="btn-primary">Consent</button></td> */}
+                    {/* <td><input type="checkbox" onChange={()=>this.handleCheck(board)} defaultChecked={this.state.checked}/></td> */}
+                    
                   </tr>
                 )}
               </tbody>
