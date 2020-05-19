@@ -25,6 +25,7 @@ export const signUp = newUser => (dispatch, getState, { getFirebase, getFirestor
         lastName: newUser.lastName,
         initials: newUser.firstName[0] + newUser.lastName[0],
         isAcceptedTerms: false,
+        isAdmin: true,
       });
     }).then(() => {
       dispatch({ type: 'SIGNUP_SUCCESS' });

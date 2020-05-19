@@ -14,6 +14,7 @@ import Profile from "../../assets/images/profile.png";
 import Key from "../../assets/images/key.jpg";
 import Keyrole from "../../assets/images/viewkey.jpg";
 import Team from "../../assets/images/viewTeam.png";
+import Dates from '../../assets/images/date.png'
 
 class Dashboard extends Component {
   render() {
@@ -81,16 +82,21 @@ class Dashboard extends Component {
               </Link>
             </div>
             <div class="image-section">
-            <Link to="/ClientData">
-              <div class="section-style">
+              <Link to="/ClientData">
+                <div class="section-style">
                 <img src={Notification} height="200" width="400" alt=""/>
                 <p>Client Profile</p>
-              </div></Link>
+                </div></Link>
               <Link to="/viewTeams">
-              <div class="section-style">
+                <div class="section-style">
                 <img src={Team} height="200" width="400" alt=""/>
                 <p>View Teams</p>
               </div></Link>
+              <Link to="/viewDuration">
+                <div class="section-style">
+                <img src={Dates} height="200" width="400" alt=""/>
+                <p>View Duration</p>
+                </div></Link>
             </div>
           </div>
         </div>

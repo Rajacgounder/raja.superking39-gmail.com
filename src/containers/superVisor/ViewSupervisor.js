@@ -103,7 +103,7 @@ class Keyshow extends Component {
             </h3>
           </div>
           <div class="panel-body">
-          <h4><button type="submit" class="btn btn-primary  float-right" >Create Team</button></h4>
+          <h4><Link to="viewTeams"><button type="submit" class="btn btn-primary  float-right" >Create Team</button></Link></h4>
           <form onSubmit={this.onSubmit}>
             <table class="table table-stripe">
               <thead>
