@@ -8,6 +8,9 @@ import firebase from "../../config/fbConfig"
 import { v4 as uuidv4 } from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 class Times extends Component {
     constructor() {
@@ -78,6 +81,12 @@ class Times extends Component {
             equalTotalValue,
             moreTotalValue,
         } = this.state;
+        const { superVisorAuthState } = this.props;
+        let superVisorAuthL =
+            JSON.parse(localStorage.getItem("superVisorAuth")) || [];
+        if (!superVisorAuthState.length && !superVisorAuthL.length) {
+            return <Redirect to="/signin" />;
+        }
         return (<div>
             <div className="container" >
                 <ToastContainer />
@@ -131,8 +140,9 @@ class Times extends Component {
                                     <tr>
                                         <th> <h5> Total </h5></th>
                                         <th > <input type="number"
-                                            min="4"
+
                                             name="lessTotalValue"
+                                            onChange={this.onChange}
                                             value={this.state.lessTotalValue}
                                             style={
                                                 {
@@ -144,8 +154,9 @@ class Times extends Component {
                                             disabled
                                         /></th>
                                         <th> <input type="number"
-                                            min="4"
+
                                             name="equalTotalValue"
+
                                             value={
                                                 equalTotalValue
                                             }
@@ -160,15 +171,10 @@ class Times extends Component {
                                                 this.onChange
                                             } /></th>
                                         <th > <input type="number"
-                                            min="4"
+
                                             name="moreTotalValue"
                                             value={moreTotalValue}
-                                            style={{
-                                                width: "200px",
-                                                height: "36px",
-                                                borderRadius: "10px"
-                                            }
-                                            }
+                                            style={{ width: "200px", height: "36px", borderRadius: "10px" }}
                                             onChange={this.onChange} /></th>
                                     </tr>
                                 </tbody>
@@ -176,7 +182,57 @@ class Times extends Component {
 
                             <button type="submit" onClick={() => {
                                 let total = (this.state.lessTotalValue + 4 * this.state.equalTotalValue + this.state.moreTotalValue) / 6;
+                                console.log(total);
+                                let std = (this.state.moreTotalValue - this.state.lessTotalValue) / 6;
+                                console.log(std);
+                                this.ref = firebase.firestore().collection("duration");
+                                this.state = {
+                                    // userId: id,
+                                    pertValue: total,
+                                    stdDevValue: std,
+                                    lessTotalValue: "",
+                                    equalTotalValue: "",
+                                    moreTotalValue: "",
+                                };
+
+                                const {
+                                    pertValue,
+                                    stdDevValue,
+                                    lessTotalValue,
+                                    equalTotalValue,
+                                    moreTotalValue,
+                                } = this.state;
+
+                                this.ref.add({
+                                    pertValue,
+                                    stdDevValue,
+                                    lessTotalValue,
+                                    equalTotalValue,
+                                    moreTotalValue,
+                                })
+                                    .then((docRef) => {
+                                        this.setState({
+                                            // userId: id,
+                                            pertValue: total,
+                                            stdDevValue: std,
+                                            lessTotalValue: "",
+                                            equalTotalValue: "",
+                                            moreTotalValue: "",
+                                        });
+                                        this.props.history.push("/superVisor");
+                                    })
+                                    .catch((error) => {
+                                        console.error("Error adding document: ", error);
+                                    });
+
+
                                 // this.ref().add({
+                                //     userId: id,
+                                //     pertValue: total,
+                                //     stdDevValue: std,
+                                //     lessTotalValue: "",
+                                //     equalTotalValue: "",
+                                //     moreTotalValue: "",
 
                                 // })
                             }} className="btn btn-info" style={{ margin: "10px 50px" }}> Save </button>
@@ -188,9 +244,13 @@ class Times extends Component {
         );
     }
 }
+const mapStateToProps = (state) => ({
+    superVisorAuthState: state.auth.superVisorAuth,
+});
 
-export default Times;
-
+export default compose(
+    connect(mapStateToProps),
+)(Times);
 // .add({
 //     userId: id,
 //     pertValue: total

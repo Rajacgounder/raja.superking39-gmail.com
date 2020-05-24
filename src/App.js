@@ -34,8 +34,8 @@ import ViewTeam from "./containers/superVisor/viewTeams"
 import Time from "./containers/superVisor/Time"
 import Notification from "./containers/superVisor/Notification"
 import Times from "./containers/superVisor/Times"
-import ExamplePDFViewer from "./containers/client/viewFile"
 import ViewDuration from "./containers/superVisor/viewDuration"
+import DisplayFile from "./containers/client/viewFile"
 
 
 // import CreateProject from "./containers/projects/CreateProject"
@@ -46,7 +46,7 @@ class App extends Component {
       <Router history={history}>
         <Navbar />
         <Switch>
-        {/* <Route exact path="/" component={Homepage}/> */}
+          {/* <Route exact path="/" component={Homepage}/> */}
           <Route exact path="/" component={Dashboard} />
           <Route path="/project/:id" component={ProjectDetails} />
           <Route path="/create" component={CreateProject} />
@@ -73,12 +73,12 @@ class App extends Component {
           <Route path="/react/:id" component={ClientEdit} />
           <Route path="/CreateClient" component={CreateClient} />
           <Route path="/show1/:id" component={ClientShow} />
-          <Route path="/viewTeams" component={ViewTeam}/>
-          <Route path="/Time" component={Time}/>
-          <Route path="/Notification" component={Notification}/>
-         <Route path="/Times" component={Times}/>
-         <Route path="/viewFile" component={ExamplePDFViewer}/>
-         <Route path="/viewDuration" component={ViewDuration}/>
+          <Route path="/viewTeams" component={ViewTeam} />
+          <Route path="/Time" component={Time} />
+          <Route path="/Notification" component={Notification} />
+          <Route path="/Times" component={Times} />
+          <Route path="/viewFile" component={DisplayFile} />
+          <Route path="/viewDuration" component={ViewDuration} />
         </Switch>
       </Router>
     );

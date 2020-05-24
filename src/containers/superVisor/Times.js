@@ -333,7 +333,7 @@ class Times extends Component {
                 </table>
 
                 {!this.state.id && <button type="submit" onClick={this.onSubmit} className="btn btn-info" style={{ margin: "10px 50px" }}>Save</button>}
-                {this.state.id && <button type="submit" disabled={isChanged()} onClick={this.onUpdate} className="btn btn-info" style={{ margin: "10px 50px" }}>Update</button>}
+                {this.state.id && <button type="submit" disabled={isChanged()} onClick={this.onUpdate} className="btn btn-primary  float-right" style={{ margin: "10px 50px" }}>Update</button>}
 
               </form> <button onClick={this.handleAddRow} className="btn btn-primary" >Add TASK </button>
               {/* <button onClick={this.handleRemoveRow} className="btn btn-danger float-right" >Delete Last TASK </button> */}

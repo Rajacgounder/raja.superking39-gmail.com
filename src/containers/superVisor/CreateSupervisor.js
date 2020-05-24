@@ -140,7 +140,7 @@ class Create extends Component {
                   onChange={this.onChange}
                   placeholder="phone no"
                   required
-                  min="10"
+                  minLength="10"
                 />
               </div>
               <div class="form-group">
