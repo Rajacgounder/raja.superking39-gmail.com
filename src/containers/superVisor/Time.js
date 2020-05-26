@@ -182,20 +182,26 @@ class Times extends Component {
 
                             <button type="submit" onClick={() => {
                                 let total = (this.state.lessTotalValue + 4 * this.state.equalTotalValue + this.state.moreTotalValue) / 6;
-                                console.log(total);
+                                // console.log(total);
                                 let std = (this.state.moreTotalValue - this.state.lessTotalValue) / 6;
-                                console.log(std);
+                                //console.log(std);
                                 this.ref = firebase.firestore().collection("duration");
-                                this.state = {
-                                    // userId: id,
-                                    pertValue: total,
-                                    stdDevValue: std,
-                                    lessTotalValue: "",
-                                    equalTotalValue: "",
-                                    moreTotalValue: "",
-                                };
+                                // this.state = {
+                                //     // userId: uid,
+                                //     pertValue: total,
+                                //     stdDevValue: std,
+                                //     lessTotalValue:this.state.lessTotalValue,
+                                //     equalTotalValue: this.state.equalTotalValue,
+                                //     moreTotalValue: this.state.moreTotalValue,
+                                // };
+                                // onChange = (e) => {
+                                //     const state = this.state;
+                                //     state[e.target.name] = e.target.value;
+                                //     this.setState(state);
+                                // };
 
                                 const {
+                                    //  userId,
                                     pertValue,
                                     stdDevValue,
                                     lessTotalValue,
@@ -204,21 +210,14 @@ class Times extends Component {
                                 } = this.state;
 
                                 this.ref.add({
-                                    pertValue,
-                                    stdDevValue,
+                                    userId: superVisorAuthL[0].id,
+                                    pertValue: total,
+                                    stdDevValue: std,
                                     lessTotalValue,
                                     equalTotalValue,
                                     moreTotalValue,
                                 })
                                     .then((docRef) => {
-                                        this.setState({
-                                            // userId: id,
-                                            pertValue: total,
-                                            stdDevValue: std,
-                                            lessTotalValue: "",
-                                            equalTotalValue: "",
-                                            moreTotalValue: "",
-                                        });
                                         this.props.history.push("/superVisor");
                                     })
                                     .catch((error) => {

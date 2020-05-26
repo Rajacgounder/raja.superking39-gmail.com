@@ -36,6 +36,7 @@ import Notification from "./containers/superVisor/Notification"
 import Times from "./containers/superVisor/Times"
 import ViewDuration from "./containers/superVisor/viewDuration"
 import DisplayFile from "./containers/client/viewFile"
+import Due from "./containers/client/Due"
 
 
 // import CreateProject from "./containers/projects/CreateProject"
@@ -79,6 +80,7 @@ class App extends Component {
           <Route path="/Times" component={Times} />
           <Route path="/viewFile" component={DisplayFile} />
           <Route path="/viewDuration" component={ViewDuration} />
+          <Route path="/Due" component={Due} />
         </Switch>
       </Router>
     );

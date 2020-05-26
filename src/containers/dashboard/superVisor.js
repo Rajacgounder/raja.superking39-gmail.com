@@ -28,6 +28,14 @@ class SupervisorDash extends Component {
       disabledStylesForTimeDuration = { pointerEvents: "none", opacity: 0.7 };
     }
 
+    let disabledStylesForConsent = {};
+    if (
+      superVisorAuthL.length &&
+      !superVisorAuthL[0].doShowConsentForm
+    ) {
+      disabledStylesForConsent = { pointerEvents: "none", opacity: 0.7 };
+    }
+
     // let disabledStylesForConsent = {};
     // if (
     //   superVisorAuthL.length &&
@@ -63,7 +71,7 @@ class SupervisorDash extends Component {
               </div>
 
               {/* <div style={disabledStylesForConsent}> */}
-              <div>
+              <div style={disabledStylesForConsent}>
                 <Link to="/Premission">
                   <div class="section-style">
                     <img src={Consent} height="100" width="400" alt="" />

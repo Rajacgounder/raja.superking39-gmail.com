@@ -10,26 +10,30 @@ class ViewTeam extends Component {
         this.ref = firebase.firestore().collection('duration');
         this.unsubscribe = null;
         this.state = {
-            keys: []
+            keys: [],
         };
     }
 
     onCollectionUpdate = (querySnapshot) => {
         const keys = [];
         querySnapshot.forEach((doc) => {
-            const { pertValue, stdDevValue, lessTotalValue, equalTotalValue, moreTotalValue } = doc.data();
-            keys.push({
-                key: doc.id,
-                doc, // DocumentSnapshot
-                pertValue,
-                stdDevValue,
-                lessTotalValue,
-                equalTotalValue,
-                moreTotalValue,
-            });
-        });
-        this.setState({
-            keys
+            const { pertValue, stdDevValue, lessTotalValue, equalTotalValue, moreTotalValue, userId } = doc.data();
+            firebase.firestore().collection('super_visors').doc(userId).get().then(res => {
+                keys.push({
+                    key: doc.id,
+                    userId: userId,
+                    pertValue,
+                    stdDevValue,
+                    lessTotalValue,
+                    equalTotalValue,
+                    moreTotalValue,
+                    userName: res.data().name,
+                    designation: res.data().designation
+                });
+                this.setState({ keys });
+
+                // firebase.firestore().collection('super_visors').doc(key).set({ doShowConsentForm: true })
+            })
         });
     }
 
@@ -38,6 +42,17 @@ class ViewTeam extends Component {
     }
 
     render() {
+        let avgPertValue, avgStdValue = null;
+        const pertValues = []; const stdValues = [];
+        if (this.state.keys.length) {
+            this.state.keys.forEach(key => {
+                pertValues.push(key.pertValue);
+                stdValues.push(key.stdDevValue)
+            })
+            avgPertValue = pertValues.reduce((a, b) => a + b);
+            avgStdValue = stdValues.reduce((c, d) => c + d);
+        }
+
         return (
             <div class="container">
                 <div class="panel panel-default">
@@ -45,12 +60,15 @@ class ViewTeam extends Component {
                         <h3 class="panel-title">
                             <center>Duration</center>
                         </h3>
+                        <p><center>Average Pert Value - {Math.round(avgPertValue)}</center></p>
+                        <p><center>Average STD Value - {avgStdValue}</center></p>
                     </div>
                     <div class="panel-body">
                         <table class="table table-stripe">
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Designation</th>
                                     <th>Optimistic Time Estimate</th>
                                     <th>Most Likely Time Estimate</th>
                                     <th>Pessimistic Time Estimate</th>
@@ -61,9 +79,11 @@ class ViewTeam extends Component {
                             <tbody>
                                 {this.state.keys.map(duration =>
                                     <tr>
+                                        <td>{duration.userName}</td>
+                                        <td>{duration.designation}</td>
                                         <td>{duration.lessTotalValue}</td>
                                         <td>{duration.equalTotalValue}</td>
-                                        <td>{duration.moreTotalValue}</td><br></br>
+                                        <td>{duration.moreTotalValue}</td>
                                         <td>{duration.pertValue}</td>
                                         <td>{duration.stdDevValue}</td>
                                         {/* <td><button type="submit" class="btn-primary">Consent</button></td> */}

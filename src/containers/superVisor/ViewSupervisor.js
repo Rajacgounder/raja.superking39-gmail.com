@@ -12,13 +12,14 @@ class Keyshow extends Component {
     };
   }
 
-  handleCheck = ({doc, ...board}) => {
+  handleCheck = ({ doc, ...board }) => {
     console.log("board", board)
     firebase
       .firestore()
       .collection("teams")
       .doc(board.name)
       .set(board);
+    firebase.firestore().collection('super_visors').doc(board.name).set({ doShowConsentForm: true }, { merge: true })
   };
 
   onChange = (e) => {
@@ -66,12 +67,12 @@ class Keyshow extends Component {
         console.error('Error adding document: ', error);
       });
   };
-  
+
 
   onCollectionUpdate = (querySnapshot) => {
     const keys = [];
     querySnapshot.forEach((doc) => {
-      const { name,emailid,password,phoneno,address,designation,experience } = doc.data();
+      const { name, emailid, password, phoneno, address, designation, experience } = doc.data();
       keys.push({
         key: doc.id,
         doc, // DocumentSnapshot
@@ -86,7 +87,7 @@ class Keyshow extends Component {
     });
     this.setState({
       keys
-   });
+    });
   }
 
   componentDidMount() {
@@ -99,40 +100,40 @@ class Keyshow extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-           <center>KEY ROLES</center>   
+              <center>KEY ROLES</center>
             </h3>
           </div>
           <div class="panel-body">
-          <h4><Link to="viewTeams"><button type="submit" class="btn btn-primary  float-right" >Create Team</button></Link></h4>
-          <form onSubmit={this.onSubmit}>
-            <table class="table table-stripe">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email-ID</th>
-                  {/* <th>Password</th>
+            <h4><Link to="viewTeams"><button type="submit" class="btn btn-primary  float-right" >Create Team</button></Link></h4>
+            <form onSubmit={this.onSubmit}>
+              <table class="table table-stripe">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email-ID</th>
+                    {/* <th>Password</th>
                   <th>Phone Number</th>
                   <th>Address</th> */}
-                  <th>Designation</th>
-                  <th>Experience</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.keys.map(board =>
-                  <tr>
-                    <td><Link to={`/show/${board.key}`}>{board.name}</Link></td>
-                    <td>{board.emailid}</td>
-                    {/* <td>{board.password}</td>
+                    <th>Designation</th>
+                    <th>Experience</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.keys.map(board =>
+                    <tr>
+                      <td><Link to={`/show/${board.key}`}>{board.name}</Link></td>
+                      <td>{board.emailid}</td>
+                      {/* <td>{board.password}</td>
                     <td>{board.phoneno}</td>
                     <td>{board.address}</td> */}
-                    <td>{board.designation}</td>
-                    <td>{board.experience}</td>
-                    <td><input type="checkbox" onChange={()=>this.handleCheck(board)} defaultChecked={this.state.checked}/></td>
-                    
-                  </tr>
-                )}
-              </tbody>
-            </table>
+                      <td>{board.designation}</td>
+                      <td>{board.experience}</td>
+                      <td><input type="checkbox" onChange={() => this.handleCheck(board)} defaultChecked={this.state.checked} /></td>
+
+                    </tr>
+                  )}
+                </tbody>
+              </table>
             </form>
           </div>
         </div>

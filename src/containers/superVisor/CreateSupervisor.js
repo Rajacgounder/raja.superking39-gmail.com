@@ -51,6 +51,7 @@ class Create extends Component {
         experience,
         doTermsAndConditionsAccepted,
         hasSelectedTermsAndConditions,
+        doShowConsentForm: false,
       })
       .then((docRef) => {
         this.setState({

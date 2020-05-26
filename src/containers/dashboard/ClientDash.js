@@ -12,9 +12,9 @@ import Dates from '../../assets/images/date.png'
 import Accept from '../../assets/images/reject.jpg'
 
 class ClientDash extends Component {
-  
+
   render() {
-    const { projects, auth, notifications,clientAuthState } = this.props;
+    const { projects, auth, notifications, clientAuthState } = this.props;
     let clientAuthL =
       JSON.parse(localStorage.getItem("clientAuth")) || [];
     if (!clientAuthState.length && !clientAuthL.length) {
@@ -32,7 +32,7 @@ class ClientDash extends Component {
             <Notifications notifications={notifications} />
           </div> */}
           <div>
-          {/* <Link to="/Consent" className="navbar-brand ml-3 ml-md-0">
+            {/* <Link to="/Consent" className="navbar-brand ml-3 ml-md-0">
           Consent <i className="text-danger fas fa-box-open mx-1"></i>
         </Link>
         <Link to="/Upload" className="navbar-brand ml-3 ml-md-0">
@@ -41,32 +41,33 @@ class ClientDash extends Component {
         <Link to="/final" className="navbar-brand ml-3 ml-md-0">
           REquest <i className="text-danger fas fa-box-open mx-1"></i>
         </Link> */}
-        
-        <div class="image-section">
-        <Link to="/srsupload">
-      <div class="section-style">
-        <img src={Upload} height="200" width="400" alt="" />
-      <p>UPLOAD SRS</p>
-      </div></Link>
-      
-      <div class="section-style">
-        <img src={Dates} width="400" height="200" alt="" />
-      <p>VIEW DATE</p>
-      </div>
-      <Link to="/final">   
-      <div class="section-style">
-        <img src={Accept} height="200" width="400" alt="" />
-        <p>ACCEPT/REJECT</p>
-      </div></Link>
-    </div>
-    <div class="image-section">
-        <Link to="/viewFile">
-      <div class="section-style">
-        <img src={Upload} height="200" width="400" alt="" />
-      <p>UPLOAD SRS</p>
-      </div></Link>
+
+            <div class="image-section">
+              <Link to="/srsupload">
+                <div class="section-style">
+                  <img src={Upload} height="200" width="400" alt="" />
+                  <p>UPLOAD SRS</p>
+                </div></Link>
+
+              <Link to="/Due">
+                <div class="section-style">
+                  <img src={Dates} width="400" height="200" alt="" />
+                  <p>VIEW DATE</p>
+                </div></Link>
+              <Link to="/final">
+                <div class="section-style">
+                  <img src={Accept} height="200" width="400" alt="" />
+                  <p>ACCEPT/REJECT</p>
+                </div></Link>
+            </div>
+            <div class="image-section">
+              <Link to="/viewFile">
+                <div class="section-style">
+                  <img src={Upload} height="200" width="400" alt="" />
+                  <p>View SRS</p>
+                </div></Link>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     );
@@ -80,7 +81,7 @@ const mapStateToProps = state => ({
   clientAuthState: state.auth.clientAuth,
 })
 
-export default compose(connect(mapStateToProps),firestoreConnect([
-  {collection: 'projects', orderBy: ['createdAt', 'desc']},
-  {collection: 'notifications', limit:5, orderBy:['time', 'desc']}]))
+export default compose(connect(mapStateToProps), firestoreConnect([
+  { collection: 'projects', orderBy: ['createdAt', 'desc'] },
+  { collection: 'notifications', limit: 5, orderBy: ['time', 'desc'] }]))
   (ClientDash);
