@@ -48,10 +48,10 @@ class Dashboard extends Component {
                 </div>
               </Link>
               <Link to="/Times">
-              <div class="section-style">
-                <img src={Profile} height="200" width="400" alt="" />
-                <p>SET DURATION</p>
-              </div></Link> 
+                <div class="section-style">
+                  <img src={Profile} height="200" width="400" alt="" />
+                  <p>SET DURATION</p>
+                </div></Link>
               <Link to="/SupervisorShow">
                 <div class="section-style">
                   <img src={Key} height="200" width="400" alt="" />
@@ -84,18 +84,18 @@ class Dashboard extends Component {
             <div class="image-section">
               <Link to="/ClientData">
                 <div class="section-style">
-                <img src={Notification} height="200" width="400" alt=""/>
-                <p>Client Profile</p>
+                  <img src={Notification} height="200" width="400" alt="" />
+                  <p>Client Profile</p>
                 </div></Link>
               <Link to="/viewTeams">
                 <div class="section-style">
-                <img src={Team} height="200" width="400" alt=""/>
-                <p>View Teams</p>
-              </div></Link>
+                  <img src={Team} height="200" width="400" alt="" />
+                  <p>View Teams</p>
+                </div></Link>
               <Link to="/viewDuration">
                 <div class="section-style">
-                <img src={Dates} height="200" width="400" alt=""/>
-                <p>View Duration</p>
+                  <img src={Dates} height="200" width="400" alt="" />
+                  <p>View Duration</p>
                 </div></Link>
             </div>
           </div>

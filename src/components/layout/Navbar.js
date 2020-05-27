@@ -5,22 +5,22 @@ import SignedOutLinks from "./SignedOutLinks";
 import { connect } from "react-redux";
 
 const Navbar = (props) => {
-  const { auth, profile, superVisorAuthState,clientAuthState } = props;
+  const { auth, profile, superVisorAuthState, clientAuthState } = props;
   let superVisorAuthL =
     JSON.parse(localStorage.getItem("superVisorAuth")) || [];
-    let clientAuthL =
+  let clientAuthL =
     JSON.parse(localStorage.getItem("clientAuth")) || [];
   const links =
     auth.uid ||
-    ((superVisorAuthState.length && superVisorAuthState[0].id) ||
-    (superVisorAuthL.length && superVisorAuthL[0].id)) || ((clientAuthState.length && clientAuthState[0].id) ||
-    (clientAuthL.length && clientAuthL[0].id)) ? (
-      <SignedInLinks profile={profile} />
-    ) : (
-      <SignedOutLinks />
-    );
-   
-  
+      ((superVisorAuthState.length && superVisorAuthState[0].id) ||
+        (superVisorAuthL.length && superVisorAuthL[0].id)) || ((clientAuthState.length && clientAuthState[0].id) ||
+          (clientAuthL.length && clientAuthL[0].id)) ? (
+        <SignedInLinks profile={profile} />
+      ) : (
+        <SignedOutLinks />
+      );
+
+
 
   return (
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
@@ -55,7 +55,7 @@ const mapStateToProps = (state) => {
     auth: state.firebase.auth,
     profile: state.firebase.profile,
     superVisorAuthState: state.auth.superVisorAuth,
-    clientAuthState:state.auth.clientAuth,
+    clientAuthState: state.auth.clientAuth,
   };
 };
 export default connect(mapStateToProps)(Navbar);

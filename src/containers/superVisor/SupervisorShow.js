@@ -83,7 +83,7 @@ class SupervisorShow extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const keys = [];
     querySnapshot.forEach((doc) => {
-      const { name,emailid,password,phoneno,address,designation,experience } = doc.data();
+      const { name, emailid, password, phoneno, address, designation, experience } = doc.data();
       keys.push({
         key: doc.id,
         doc, // DocumentSnapshot
@@ -98,13 +98,13 @@ class SupervisorShow extends Component {
     });
     this.setState({
       keys
-   });
+    });
   }
 
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
-  
+
 
   render() {
     return (
@@ -112,41 +112,41 @@ class SupervisorShow extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-           <center>KEY ROLES</center>   
+              <center>KEY ROLES</center>
             </h3>
           </div>
           <div class="panel-body">
             <h4><Link to="/CreateSupervisor" class="btn btn-primary">Add Key Roles</Link></h4>
             {/* <h4><button type="submit" class="btn btn-primary  float-right" >Create Team</button></h4> */}
             <form onSubmit={this.onSubmit}>
-            <table class="table table-stripe">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email-ID</th>
-                  <th>Password</th>
-                  <th>Phone Number</th>
-                  <th>Address</th>
-                  <th>Designation</th>
-                  <th>Experience</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.keys.map(board =>
+              <table class="table table-stripe">
+                <thead>
                   <tr>
-                    <td><Link to={`/show/${board.key}`}>{board.name}</Link></td>
-                    <td>{board.emailid}</td>
-                    <td>{board.password}</td>
-                    <td>{board.phoneno}</td>
-                    <td>{board.address}</td>
-                    <td>{board.designation}</td>
-                    <td>{board.experience}</td>
-                    {/* <td><input type="checkbox" onChange={()=>this.handleCheck(board)} defaultChecked={this.state.checked}/></td> */}
-                    
+                    <th>Name</th>
+                    <th>Email-ID</th>
+                    <th>Password</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Designation</th>
+                    <th>Experience</th>
                   </tr>
-                )}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {this.state.keys.map(board =>
+                    <tr>
+                      <td><Link to={`/show/${board.key}`}>{board.name}</Link></td>
+                      <td>{board.emailid}</td>
+                      <td>{board.password}</td>
+                      <td>{board.phoneno}</td>
+                      <td>{board.address}</td>
+                      <td>{board.designation}</td>
+                      <td>{board.experience}</td>
+                      {/* <td><input type="checkbox" onChange={()=>this.handleCheck(board)} defaultChecked={this.state.checked}/></td> */}
+
+                    </tr>
+                  )}
+                </tbody>
+              </table>
             </form>
           </div>
         </div>

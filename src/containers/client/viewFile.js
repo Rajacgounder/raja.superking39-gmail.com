@@ -6,7 +6,7 @@ const ExamplePDFViewer = () => {
     return (
         <PDFViewer
             document={{
-                url: 'https://www.reqview.com/papers/ReqView-Example_Software_Requirements_Specification_SRS_Document.pdf',
+                url: 'https://firebasestorage.googleapis.com/v0/b/duration-6dcea.appspot.com/o/images%2Ffinal_copy.pdf?alt=media&token=40c215be-27a1-48d4-b283-d741d6bee60c',
             }}
         />
     )

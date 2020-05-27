@@ -24,7 +24,7 @@ class CreateProject extends Component {
   componentDidMount() {
     this.props.getConsents();
   }
-  
+
 
   render() {
     const { auth, loading } = this.props;
@@ -35,13 +35,13 @@ class CreateProject extends Component {
         <h1>Create new Consent</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label htmlFor="content">Content</label>
+            <label htmlFor="content">Rules</label>
             <textarea
               className="form-control"
               id="content"
               onChange={this.handleChange}
               value={this.state.content}
-              placeholder="Content"
+              placeholder="Rules"
               required
             />
           </div>
@@ -51,17 +51,17 @@ class CreateProject extends Component {
           <h1>
             <center>Consent Form</center>
           </h1>
-          
+
           {consents.length > 0 ? (
             consents.map((consent) => {
               return <p>{consent.content}</p>;
-              
+
             })
           ) : (
-            <p>Loading...</p>
-          )}
+              <p>Loading...</p>
+            )}
 
-           {/* <Link to={"/project/" + props.match.params.id + "/edit"}><button className="waves-effect btn right orange"><i className="material-icons left">mode_edit</i>Edit Consent</button></Link> */}
+          {/* <Link to={"/project/" + props.match.params.id + "/edit"}><button className="waves-effect btn right orange"><i className="material-icons left">mode_edit</i>Edit Consent</button></Link> */}
         </form>
       </div>
     );

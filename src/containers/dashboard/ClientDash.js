@@ -7,6 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom'
 import './dash.css';
+import Srs from "../../assets/images/srs.png";
 import Upload from '../../assets/images/upload.png'
 import Dates from '../../assets/images/date.png'
 import Accept from '../../assets/images/reject.jpg'
@@ -51,19 +52,19 @@ class ClientDash extends Component {
 
               <Link to="/Due">
                 <div class="section-style">
-                  <img src={Dates} width="400" height="200" alt="" />
+                  <img src={Dates} height="200" width="400" alt="" />
                   <p>VIEW DATE</p>
                 </div></Link>
               <Link to="/final">
                 <div class="section-style">
-                  <img src={Accept} height="200" width="400" alt="" />
+                  <img src={Accept} height="100" width="400" alt="" />
                   <p>ACCEPT/REJECT</p>
                 </div></Link>
             </div>
             <div class="image-section">
               <Link to="/viewFile">
                 <div class="section-style">
-                  <img src={Upload} height="200" width="400" alt="" />
+                  <img src={Srs} height="200" width="350" alt="" />
                   <p>View SRS</p>
                 </div></Link>
             </div>

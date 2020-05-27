@@ -66,7 +66,7 @@ class SupervisorDash extends Component {
 
             <div class="image-section">
               <div class="section-style">
-                <img src={Srs} height="100" width="400" alt="" />
+                <img src={Srs} height="200" width="350" alt="" />
                 <p>VIEW SRS</p>
               </div>
 
@@ -74,7 +74,7 @@ class SupervisorDash extends Component {
               <div style={disabledStylesForConsent}>
                 <Link to="/Premission">
                   <div class="section-style">
-                    <img src={Consent} height="100" width="400" alt="" />
+                    <img src={Consent} height="200" width="350" alt="" />
                     <p>VIEW CONSENT</p>
                   </div>
                 </Link>
@@ -83,7 +83,7 @@ class SupervisorDash extends Component {
               <div style={disabledStylesForTimeDuration}>
                 <Link to="/Time">
                   <div class="section-style">
-                    <img src={Duration} height="100" width="400" alt="" />
+                    <img src={Duration} height="200" width="350" alt="" />
                     <p>SELECT TIME DURATION</p>
                   </div>
                 </Link>
