@@ -6,25 +6,24 @@ const ExamplePDFViewer = () => {
     return (
         <PDFViewer
             document={{
-                url: 'https://firebasestorage.googleapis.com/v0/b/duration-6dcea.appspot.com/o/images%2Ffinal_copy.pdf?alt=media&token=40c215be-27a1-48d4-b283-d741d6bee60c',
+                url: 'https://firebasestorage.googleapis.com/v0/b/final-2a0a0.appspot.com/o/images%2FReqView-Example_Software_Requirements_Specification_SRS_Document.pdf?alt=media&token=ee348272-e99b-4f3f-b64b-f603a8519f33',
             }}
         />
     )
 
 }
-
 export default ExamplePDFViewer;
 // class DisplayFile extends React.Component {
 //     constructor() {
 //         super();
 //         this.state = {
-//             images: []
+//             files: []
 //         };
 
-//         this.getImage("images");
+//         this.getFile("files");
 //     }
 
-//     getImage() {
+//     getFile() {
 //         let { state } = this;
 
 //         // Create a reference under which you want to list
@@ -38,7 +37,7 @@ export default ExamplePDFViewer;
 //             .listAll()
 //             .then(function (res) {
 //                 // Store the list in the state, just in case we need it somewhere
-//                 state.images = res.items;
+//                 state.files = res.items;
 //                 state.downloadURLs = {}; // in here we'll store the download URL for each image by its name
 //                 this.setState(state);
 
@@ -50,7 +49,7 @@ export default ExamplePDFViewer;
 //                             this.setState(state);
 //                         })
 //                         .catch(error => {
-//                             // Handle any errors
+//                             console.log.error("File not found", error)
 //                         });
 //                 });
 //             })
@@ -60,17 +59,12 @@ export default ExamplePDFViewer;
 //     }
 
 //     render() {
-//         let numbersOfImagesInFolder = this.state.images.length;
+//         let numbersOfFilesInFolder = this.state.files.length;
 
-//         let imagesInFolder = this.state.images.map(image => {
+//         let FilesInFolder = this.state.files.map(file => {
 //             return (
 //                 <>
-//                     <img
-//                         key={image}
-//                         src={require(`${image}.jpg`)}
-//                         alt=""
-//                         className="img-responsive"
-//                     />
+
 //                 </>
 //             );
 //         });
@@ -78,11 +72,11 @@ export default ExamplePDFViewer;
 //         return (
 //             <>
 //                 <br />
-//                 {numbersOfImagesInFolder}
-//                 {imagesInFolder}
+//                 {numbersOfFilesInFolder}
+//                 {FilesInFolder}
 //             </>
 //         );
 //     }
 // }
 
-//export default DisplayFile;
+// export default DisplayFile;

@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 import { connect } from "react-redux";
+import "./nav.css"
 
 const Navbar = (props) => {
   const { auth, profile, superVisorAuthState, clientAuthState } = props;
@@ -25,7 +26,7 @@ const Navbar = (props) => {
   return (
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
       <div className="container">
-        <Link to="#" className="navbar-brand ml-3 ml-md-0">
+        <Link to="/" className="navbar-brand ml-3 ml-md-0">
           Software Project Duration Estimation Tool
           <i className="text-danger  mx-1"></i>
         </Link>

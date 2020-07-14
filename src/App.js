@@ -37,6 +37,10 @@ import Times from "./containers/superVisor/Times"
 import ViewDuration from "./containers/superVisor/viewDuration"
 import DisplayFile from "./containers/client/viewFile"
 import Due from "./containers/client/Due"
+//CRUD operations on Consent
+import ProjectShow from "./containers/projects/ProjectShow"
+import ProjectEdit from "./containers/projects/ProjectEdit"
+import Updateconsent from "./containers/superVisor/updateConsent"
 
 
 // import CreateProject from "./containers/projects/CreateProject"
@@ -81,6 +85,10 @@ class App extends Component {
           <Route path="/viewFile" component={DisplayFile} />
           <Route path="/viewDuration" component={ViewDuration} />
           <Route path="/Due" component={Due} />
+          <Route path="/rule/:id" component={ProjectShow} />
+          <Route path="/ruleedit/:id" component={ProjectEdit} />
+          <Route path="/updateConsent" component={Updateconsent} />
+
         </Switch>
       </Router>
     );

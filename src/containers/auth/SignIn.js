@@ -8,18 +8,15 @@ class SignIn extends Component {
     email: "",
     password: "",
   };
-
   handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value,
     });
   };
-
   handleSubmit = e => {
     e.preventDefault();
     this.props.signIn(this.state);
   };
-
   render() {
     const { authError, auth } = this.props;
     if (auth.uid) return <Redirect to="/" />;
@@ -28,7 +25,6 @@ class SignIn extends Component {
         <div className="login-header my-5">
           <h1>Manager Login</h1>
         </div>
-
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email address</label>
@@ -39,6 +35,7 @@ class SignIn extends Component {
               onChange={this.handleChange}
               value={this.state.email}
               placeholder="Enter email"
+              style={{ width: "400px" }}
             />
           </div>
           <div className="form-group">
@@ -50,6 +47,7 @@ class SignIn extends Component {
               onChange={this.handleChange}
               value={this.state.password}
               placeholder="Password"
+              style={{ width: "400px" }}
             />
           </div>
           {authError ? <div className="text-danger my-2">{authError}</div> : null}
@@ -57,17 +55,13 @@ class SignIn extends Component {
             sign in <i class="fas fa-sign-in-alt" />
           </button>
         </form>
+
       </div>
     );
   }
 }
-
 const mapStateToProps = state => ({
   authError: state.auth.authError,
   auth: state.firebase.auth,
 });
-
-export default connect(
-  mapStateToProps,
-  { signIn }
-)(SignIn);
+export default connect(mapStateToProps, { signIn })(SignIn);

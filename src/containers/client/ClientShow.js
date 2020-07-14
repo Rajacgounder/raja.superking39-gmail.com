@@ -28,7 +28,7 @@ class ClientShow extends Component {
     });
   }
 
-  delete(id){
+  delete(id) {
     firebase.firestore().collection('client').doc(id).delete().then(() => {
       console.log("Document successfully deleted!");
       this.props.history.push("/")
@@ -42,7 +42,7 @@ class ClientShow extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4><Link to="/ClientData">Client Data</Link></h4>
+            <h4><Link to="/ClientData">Client Data</Link></h4>
             <h3 class="panel-title">
               {this.state.board.name}
             </h3>
@@ -55,11 +55,11 @@ class ClientShow extends Component {
               <dd>{this.state.board.password}</dd>
               <dt>Phone Number:</dt>
               <dd>{this.state.board.phoneno}</dd>
-              <dt>Address:</dt>
+              <dt>Company Address:</dt>
               <dd>{this.state.board.address}</dd>
-              <dt>Desigation:</dt>
-              <dd>{this.state.board.designation}</dd>
-              <dt>companyname:</dt>
+              {/* <dt>Desigation:</dt>
+              <dd>{this.state.board.designation}</dd> */}
+              <dt>Company Name:</dt>
               <dd>{this.state.board.companyname}</dd>
             </dl>
             <Link to={`/react/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;

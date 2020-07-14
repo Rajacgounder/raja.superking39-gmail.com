@@ -15,6 +15,7 @@ class Times extends Component {
     this.ref = firebase.firestore().collection("time");
     this.state = {
       lessTotalValue: "",
+      projectName: "",
       equalTotalValue: "",
       moreTotalValue: "",
       pertValue: "",
@@ -49,6 +50,7 @@ class Times extends Component {
 
     const {
       lessTotalValue,
+      projectName,
       equalTotalValue,
       moreTotalValue,
       pertValue,
@@ -58,6 +60,7 @@ class Times extends Component {
     this.ref
       .add({
         lessTotalValue,
+        projectName,
         equalTotalValue,
         moreTotalValue,
         pertValue,
@@ -67,6 +70,7 @@ class Times extends Component {
       .then((docRef) => {
         this.setState({
           lessTotalValue: "",
+          projectName: "",
           equalTotalValue: "",
           moreTotalValue: "",
           pertValue: "",
@@ -159,6 +163,7 @@ class Times extends Component {
       lessTotalValue,
       equalTotalValue,
       moreTotalValue,
+      projectName,
     } = this.state;
     const isChanged = () => {
       this.state.taskListClone.forEach(task => {
@@ -184,22 +189,35 @@ class Times extends Component {
           <div className="row clearfix" >
             <div className="col-md-12 column" >
               <form onSubmit={e => e.preventDefault()} >
+                {/* <div className="form-group">
+                  <label htmlFor="projectName">ProjectName</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="projectName"
+                    onChange={this.onChange}
+                    value={this.state.projectName}
+                    placeholder="Enter projectName"
+                    style={{ width: "300px" }}
+                    required
+                  />
+                </div> */}
                 <table className="table table-bordered table-hover"
                   id="tab_logic" >
                   <thead >
                     <tr>
-                      <th className="text-center" > TASKS </th>
-                      <th className="text-center" > Less </th>
+                      <th className="text-center" ><p><h1>TASKS </h1></p> </th>
+                      {/* <th className="text-center" > Less </th>
                       <th className="text-center" > EQUAL </th>
-                      <th className="text-center" > MORE </th> <th />
+                      <th className="text-center" > MORE </th> <th /> */}
                     </tr> </thead>
                   <tbody>
                     <>
                       <tr id="addr0" key={1}>
                         <td>
-                          <input type="text" name="taskName" value={this.state.taskName} onChange={this.handleChange()} className="form-control" />
+                          <input type="text" name="taskName" value={this.state.taskName} onChange={this.handleChange()} className="form-control" style={{ width: "300px" }} />
                         </td>
-                        <td>
+                        {/* <td>
                           <input type="number"
                             name="lessTotalValue"
                             disabled={true}
@@ -230,7 +248,7 @@ class Times extends Component {
                             }
                             ref="moreTotalValue"
                             className="form-control" />
-                        </td>
+                        </td> */}
                         {/* <td>
                         <button className="btn btn-outline-danger btn-sm" onClick={this.handleRemoveSpecificRow()}>Remove </button>
                       </td> */}
@@ -239,9 +257,9 @@ class Times extends Component {
                     {this.state.taskList.map((item, id) => (
                       <tr id="addr0" key={id}>
                         <td>
-                          <input type="text" name="taskName" value={item.taskName} onChange={this.handleChange(id)} className="form-control" />
+                          <input type="text" name="taskName" value={item.taskName} onChange={this.handleChange(id)} className="form-control" style={{ width: "300px" }} />
                         </td>
-                        <td>
+                        {/* <td>
                           <input type="number"
                             name="lessTotalValue"
                             disabled={true}
@@ -272,14 +290,14 @@ class Times extends Component {
                             }
                             ref="moreTotalValue"
                             className="form-control" />
-                        </td>
+                        </td> */}
                         <td>
                           <button className="btn btn-outline-danger btn-sm" onClick={this.handleRemoveSpecificRow(item.id)}>Remove </button>
                         </td>
                       </tr>)
                     )
                     }
-                    <tr>
+                    {/* <tr>
                       <th> <h5> Total </h5></th>
                       <th > <input type="number"
                         min="4"
@@ -328,7 +346,7 @@ class Times extends Component {
                         }
                         }
                         onChange={this.onChange} /></th>
-                    </tr>
+                    </tr> */}
                   </tbody>
                 </table>
 

@@ -15,7 +15,7 @@ class ClientData extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const keys = [];
     querySnapshot.forEach((doc) => {
-      const { name,emailid,password,phoneno,address,designation,companyname } = doc.data();
+      const { name, emailid, password, phoneno, address, designation, companyname } = doc.data();
       keys.push({
         key: doc.id,
         doc, // DocumentSnapshot
@@ -30,7 +30,7 @@ class ClientData extends Component {
     });
     this.setState({
       keys
-   });
+    });
   }
 
   componentDidMount() {
@@ -43,7 +43,7 @@ class ClientData extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-           <center>Client</center>   
+              <center>Client</center>
             </h3>
           </div>
           <div class="panel-body">
@@ -53,10 +53,8 @@ class ClientData extends Component {
                 <tr>
                   <th>Name</th>
                   <th>Email-ID</th>
-                  <th>Password</th>
                   <th>Phone Number</th>
                   <th>Address</th>
-                  <th>Designation</th>
                   <th>companyname</th>
                 </tr>
               </thead>
@@ -65,10 +63,8 @@ class ClientData extends Component {
                   <tr>
                     <td><Link to={`/show1/${board.key}`}>{board.name}</Link></td>
                     <td>{board.emailid}</td>
-                    <td>{board.password}</td>
                     <td>{board.phoneno}</td>
                     <td>{board.address}</td>
-                    <td>{board.designation}</td>
                     <td>{board.companyname}</td>
                     {/* <td><button type="submit" class="btn-primary">Consent</button></td> */}
                   </tr>

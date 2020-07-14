@@ -9,8 +9,8 @@ class ClientEdit extends Component {
     this.state = {
       key: '',
       name: '',
-        emailid: '',
-        password: '',
+      emailid: '',
+      password: '',
       phoneno: '',
       address: '',
       designation: '',
@@ -30,7 +30,6 @@ class ClientEdit extends Component {
           password: board.password,
           phoneno: board.phoneno,
           address: board.address,
-          designation: board.designation,
           companyname: board.companyname
 
         });
@@ -43,39 +42,37 @@ class ClientEdit extends Component {
   onChange = (e) => {
     const state = this.state
     state[e.target.name] = e.target.value;
-    this.setState({board:state});
+    this.setState({ board: state });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { name,emailid,password,phoneno,address,designation,companyname } = this.state;
+    const { name, emailid, password, phoneno, address, designation, companyname } = this.state;
 
     const updateRef = firebase.firestore().collection('client').doc(this.state.key);
     updateRef.set({
       name,
-        emailid,
-        password,
-        phoneno,
-        address,
-        designation,
-        companyname
+      emailid,
+      password,
+      phoneno,
+      address,
+      companyname
     }).then((docRef) => {
       this.setState({
         key: '',
         name: '',
         emailid: '',
         password: '',
-      phoneno: '',
-      address: '',
-      designation: '',
-      companyname: ''
+        phoneno: '',
+        address: '',
+        companyname: ''
       });
-      this.props.history.push("/show1/"+this.props.match.params.id)
+      this.props.history.push("/show1/" + this.props.match.params.id)
     })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-    });
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   }
 
   render() {
@@ -84,39 +81,39 @@ class ClientEdit extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-             <center>Edit Client</center>
+              <center>Edit Client</center>
             </h3>
           </div>
           <div class="panel-body">
             <h4><Link to={`/show1/${this.state.key}`} class="btn btn-primary">Client</Link></h4>
             <form onSubmit={this.onSubmit}>
-            <div class="form-group">
+              <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" name="name" value={this.state.name} onChange={this.onChange} placeholder="Name" />
+                <input type="text" class="form-control" name="name" value={this.state.name} onChange={this.onChange} placeholder="Name" style={{ width: "300px" }} />
               </div>
               <div class="form-group">
                 <label for="emailid">emailid</label>
-                <input type="email" class="form-control" name="emailid" value={this.state.emailid} onChange={this.onChange} placeholder="xyz@gmail.com"/>
+                <input type="email" class="form-control" name="emailid" value={this.state.emailid} onChange={this.onChange} placeholder="xyz@gmail.com" style={{ width: "300px" }} />
               </div>
               <div class="form-group">
                 <label for="password">password</label>
-                <input type="password" class="form-control" name="password" value={this.state.password} onChange={this.onChange} placeholder="********" />
+                <input type="password" class="form-control" name="password" minLength="8" value={this.state.password} onChange={this.onChange} placeholder="********" style={{ width: "300px" }} />
               </div>
               <div class="form-group">
                 <label for="phoneno">Phone Number</label>
-                <input type="number" class="form-control" name="phoneno" value={this.state.phoneno} onChange={this.onChange} placeholder="9876543211" />
+                <input type="tel" class="form-control" name="phoneno" minLength="10" value={this.state.phoneno} onChange={this.onChange} placeholder="phone number" style={{ width: "300px" }} />
               </div>
               <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" name="address" value={this.state.address} onChange={this.onChange} placeholder="address" />
+                <input type="text" class="form-control" name="address" value={this.state.address} onChange={this.onChange} placeholder="address" style={{ width: "300px" }} />
               </div>
-              <div class="form-group">
+              {/* <div class="form-group">
                 <label for="designation">Designation</label>
                 <input type="text" class="form-control" name="designation" value={this.state.designation} onChange={this.onChange} placeholder="Designation" />
-              </div>
+              </div> */}
               <div class="form-group">
                 <label for="companyname">companyname</label>
-                <input type="text" class="form-control" name="companyname" value={this.state.companyname} onChange={this.onChange} placeholder="companyname" />
+                <input type="text" class="form-control" name="companyname" value={this.state.companyname} onChange={this.onChange} placeholder="companyname" style={{ width: "300px" }} />
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>

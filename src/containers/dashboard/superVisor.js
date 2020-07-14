@@ -65,16 +65,17 @@ class SupervisorDash extends Component {
         </Link> */}
 
             <div class="image-section">
-              <div class="section-style">
-                <img src={Srs} height="200" width="350" alt="" />
-                <p>VIEW SRS</p>
-              </div>
+              <Link to="/viewFile">
+                <div class="section-style">
+                  <img src={Srs} height="300" width="400" alt="" style={{ border: "solid" }} />
+                  <p>VIEW SRS</p>
+                </div></Link>
 
               {/* <div style={disabledStylesForConsent}> */}
               <div style={disabledStylesForConsent}>
                 <Link to="/Premission">
                   <div class="section-style">
-                    <img src={Consent} height="200" width="350" alt="" />
+                    <img src={Consent} height="300" width="400" alt="" style={{ border: "solid" }} />
                     <p>VIEW CONSENT</p>
                   </div>
                 </Link>
@@ -83,7 +84,7 @@ class SupervisorDash extends Component {
               <div style={disabledStylesForTimeDuration}>
                 <Link to="/Time">
                   <div class="section-style">
-                    <img src={Duration} height="200" width="350" alt="" />
+                    <img src={Duration} height="300" width="400" alt="" style={{ border: "solid" }} />
                     <p>SELECT TIME DURATION</p>
                   </div>
                 </Link>

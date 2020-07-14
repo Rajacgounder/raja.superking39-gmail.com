@@ -46,26 +46,26 @@ class ClientDash extends Component {
             <div class="image-section">
               <Link to="/srsupload">
                 <div class="section-style">
-                  <img src={Upload} height="200" width="400" alt="" />
+                  <img src={Upload} height="300" width="400" alt="" style={{ border: "solid" }} />
                   <p>UPLOAD SRS</p>
                 </div></Link>
 
               <Link to="/Due">
                 <div class="section-style">
-                  <img src={Dates} height="200" width="400" alt="" />
-                  <p>VIEW DATE</p>
+                  <img src={Dates} height="300" width="400" alt="" style={{ border: "solid" }} />
+                  <p>VIEW DURATION</p>
                 </div></Link>
               <Link to="/final">
                 <div class="section-style">
-                  <img src={Accept} height="100" width="400" alt="" />
+                  <img src={Accept} height="300" width="400" alt="" style={{ border: "solid" }} />
                   <p>ACCEPT/REJECT</p>
                 </div></Link>
             </div>
             <div class="image-section">
               <Link to="/viewFile">
                 <div class="section-style">
-                  <img src={Srs} height="200" width="350" alt="" />
-                  <p>View SRS</p>
+                  <img src={Srs} height="300" width="400" alt="" style={{ border: "solid" }} />
+                  <p>VIEW SRS</p>
                 </div></Link>
             </div>
           </div>

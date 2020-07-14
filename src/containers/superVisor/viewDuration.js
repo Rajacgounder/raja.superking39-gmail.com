@@ -42,17 +42,17 @@ class ViewTeam extends Component {
     }
 
     render() {
-        let avgPertValue, avgStdValue = null;
+        let avgPertValue, week, avgStdValue = null;
         const pertValues = []; const stdValues = [];
         if (this.state.keys.length) {
             this.state.keys.forEach(key => {
                 pertValues.push(key.pertValue);
                 stdValues.push(key.stdDevValue)
             })
-            avgPertValue = pertValues.reduce((a, b) => a + b);
-            avgStdValue = stdValues.reduce((c, d) => c + d);
+            avgPertValue = pertValues.reduce((a, b) => a + b) / this.state.keys.length;
+            avgStdValue = stdValues.reduce((c, d) => c + d) / this.state.keys.length;
         }
-
+        week = avgPertValue / 7;
         return (
             <div class="container">
                 <div class="panel panel-default">
@@ -60,8 +60,9 @@ class ViewTeam extends Component {
                         <h3 class="panel-title">
                             <center>Duration</center>
                         </h3>
-                        <p><center>Average Pert Value - {Math.round(avgPertValue)}</center></p>
-                        <p><center>Average STD Value - {avgStdValue}</center></p>
+                        <p><center>Average Pert Value -{Math.round(avgPertValue)}</center></p>
+                        <p><center>Total number of weeks-{Math.round(week)}</center></p>
+                        <p><center>Average STD Value -{(Math.round(avgStdValue))}</center></p>
                     </div>
                     <div class="panel-body">
                         <table class="table table-stripe">
@@ -86,7 +87,6 @@ class ViewTeam extends Component {
                                         <td>{duration.moreTotalValue}</td>
                                         <td>{duration.pertValue}</td>
                                         <td>{duration.stdDevValue}</td>
-                                        {/* <td><button type="submit" class="btn-primary">Consent</button></td> */}
                                     </tr>
                                 )}
                             </tbody>
@@ -97,6 +97,4 @@ class ViewTeam extends Component {
         );
     }
 }
-
-
 export default ViewTeam;

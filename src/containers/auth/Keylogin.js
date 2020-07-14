@@ -47,6 +47,7 @@ class Keylogin extends Component {
               onChange={this.handleChange}
               value={this.state.email}
               placeholder="Enter email"
+              style={{ width: "400px" }}
             />
           </div>
           <div className="form-group">
@@ -58,6 +59,7 @@ class Keylogin extends Component {
               onChange={this.handleChange}
               value={this.state.password}
               placeholder="Password"
+              style={{ width: "400px" }}
             />
           </div>
           {authError ? (

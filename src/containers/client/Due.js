@@ -42,18 +42,17 @@ class ViewTeam extends Component {
     }
 
     render() {
-        let avgPertValue, avgStdValue = null;
+        let avgPertValue, week, avgStdValue = null;
         const pertValues = []; const stdValues = [];
         if (this.state.keys.length) {
             this.state.keys.forEach(key => {
                 pertValues.push(key.pertValue);
                 stdValues.push(key.stdDevValue)
             })
-            avgPertValue = pertValues.reduce((a, b) => a + b);
-            avgStdValue = stdValues.reduce((c, d) => c + d);
+            avgPertValue = pertValues.reduce((a, b) => a + b) / this.state.keys.length;
+            avgStdValue = stdValues.reduce((c, d) => c + d) / this.state.keys.length;
         }
-        let weeks = (this.state.avgPertValue / 7);
-        console.log(weeks);
+        week = avgPertValue / 7;
 
         return (
             <div class="container">
@@ -64,13 +63,10 @@ class ViewTeam extends Component {
                         </h3></p>
                         <br />
                         <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
                         <div>
-                            <p><center>Total Days to complete Project - {Math.round(avgPertValue)}</center></p><br />
-                            <p><center>Average STD Value - {Math.round(avgStdValue)}</center></p>
+                            <p><center>Total Number of Days to complete the Project -{Math.round(avgPertValue)}</center></p><br />
+                            <p><center>Total Number of Weeks to complete the Project - {Math.round(week)}</center></p><br />
+                            <p><center>Average Standard Deviation  Value -{Math.round(avgStdValue)}</center></p>
                         </div>
                     </div>
                 </div>

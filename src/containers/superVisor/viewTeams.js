@@ -13,12 +13,10 @@ class ViewTeam extends Component {
       keys: []
     };
   }
-
   onCollectionUpdate = (querySnapshot) => {
     const keys = [];
     querySnapshot.forEach((doc) => {
       const { name, emailid, password, phoneno, address, designation, companyname, experience } = doc.data();
-
       keys.push({
         key: doc.id,
         doc, // DocumentSnapshot
@@ -32,11 +30,9 @@ class ViewTeam extends Component {
       keys
     });
   }
-
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
-
   render() {
     return (
       <div class="container">
@@ -47,7 +43,7 @@ class ViewTeam extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to="#" class="btn btn-primary">Send Consent</Link></h4>
+            <h4><Link to="/" class="btn btn-primary">Send Consent</Link></h4>
             <table class="table table-stripe">
               <thead>
                 <tr>
@@ -64,7 +60,6 @@ class ViewTeam extends Component {
                     <td>{board.emailid}</td>
                     <td>{board.designation}</td>
                     <td>{board.experience}</td>
-                    {/* <td><button type="submit" class="btn-primary">Consent</button></td> */}
                   </tr>
                 )}
               </tbody>
@@ -75,6 +70,4 @@ class ViewTeam extends Component {
     );
   }
 }
-
-
 export default ViewTeam;

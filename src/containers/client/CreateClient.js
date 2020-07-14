@@ -87,70 +87,77 @@ class CreateClient extends Component {
                 CLIENT
               </Link>
             </h4>
-            <form onSubmit={this.onSubmit}>
-              <div class="form-group">
-                <label for="name">Name:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="name"
-                  value={name}
-                  onChange={this.onChange}
-                  placeholder="Name"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="emailid">emailid</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  name="emailid"
-                  value={emailid}
-                  onChange={this.onChange}
-                  placeholder="xyz@gmail.com"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="password">password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  name="password"
-                  value={password}
-                  onChange={this.onChange}
-                  placeholder="********"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="phoneno">Phone Number</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="phoneno"
-                  value={phoneno}
-                  onChange={this.onChange}
-                  pattern="[7-9]{1}[0-9]{9}"
-                  placeholder="phno"
-                  required
-                  min="10"
-                />
-              </div>
-              <div class="form-group">
-                <label for="address">Address</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="address"
-                  value={address}
-                  onChange={this.onChange}
-                  placeholder="address"
-                  required
-                />
-              </div>
-              <div class="form-group">
+            <center>
+              <form onSubmit={this.onSubmit}>
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    value={name}
+                    onChange={this.onChange}
+                    placeholder="Name"
+                    style={{ width: "300px" }}
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="emailid">emailid</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="emailid"
+                    value={emailid}
+                    onChange={this.onChange}
+                    placeholder="xyz@gmail.com"
+                    style={{ width: "300px" }}
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    minLength="8"
+                    value={password}
+                    onChange={this.onChange}
+                    placeholder="********"
+                    style={{ width: "300px" }}
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="phoneno">Phone Number</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    name="phoneno"
+                    value={phoneno}
+                    onChange={this.onChange}
+                    style={{ width: "300px" }}
+                    pattern="[7-9]{1}[0-9]{9}"
+                    placeholder="phone no"
+                    required
+                    minLength="10"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="address"
+                    value={address}
+                    onChange={this.onChange}
+                    placeholder="address"
+                    style={{ width: "300px" }}
+                    required
+                  />
+                </div>
+                {/* <div class="form-group">
                 <label for="designation">Designation</label>
                 <input
                   type="text"
@@ -161,23 +168,25 @@ class CreateClient extends Component {
                   placeholder="Designation"
                   required
                 />
-              </div>
-              <div class="form-group">
-                <label for="companyname">companyname</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="companyname"
-                  value={companyname}
-                  onChange={this.onChange}
-                  placeholder="companyname"
-                  required
-                />
-              </div>
-              <button type="submit" class="btn btn-success">
-                Submit
+              </div> */}
+                <div class="form-group">
+                  <label for="companyname">Company Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="companyname"
+                    value={companyname}
+                    onChange={this.onChange}
+                    placeholder="company name"
+                    required
+                    style={{ width: "300px" }}
+                  />
+                </div>
+                <button type="submit" class="btn btn-success">
+                  Submit
               </button>
-            </form>
+              </form>
+            </center>
           </div>
         </div>
       </div>

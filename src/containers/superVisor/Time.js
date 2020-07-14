@@ -43,13 +43,10 @@ class Times extends Component {
             }
         })
     }
-
     onChange = (e) => {
         const state = this.state;
         state[e.target.name] = e.target.value;
     };
-
-
     handleChange = id => e => {
         let valueName = '';
         switch (e.target.name) {
@@ -75,6 +72,8 @@ class Times extends Component {
         this.setState({ [e.target.name]: values, [valueName]: totalValue })
     };
 
+    isButtonClicked
+
     render() {
         const {
             lessTotalValue,
@@ -92,13 +91,18 @@ class Times extends Component {
                 <ToastContainer />
                 <div className="row clearfix" >
                     <div className="col-md-12 column" >
+                        <div >
+                            <p>LESS(in days) : Favourable time to complete the task</p>
+                            <p>EQUAL(in days) : Both Favourable and Unfavourable time to complete the task</p>
+                            <p>MORE(in days) : Unfavourable time to complete the task</p>
+                        </div>
                         <form onSubmit={e => e.preventDefault()}>
                             <table className="table table-bordered table-hover"
                                 id="tab_logic" >
                                 <thead >
                                     <tr>
                                         <th className="text-center" > TASKS </th>
-                                        <th className="text-center" > Less </th>
+                                        <th className="text-center" > LESS </th>
                                         <th className="text-center" > EQUAL </th>
                                         <th className="text-center" > MORE </th> <th />
                                     </tr> </thead>
@@ -114,7 +118,8 @@ class Times extends Component {
                                                     onChange={this.handleChange(item.id)
                                                     }
                                                     ref="lessValue"
-                                                    className="form-control" />
+                                                    className="form-control"
+                                                    required />
                                             </td>
                                             <td>
                                                 <input type="number"
@@ -123,7 +128,8 @@ class Times extends Component {
                                                         this.handleChange(item.id)
                                                     }
                                                     ref="equalValue"
-                                                    className="form-control" />
+                                                    className="form-control"
+                                                    required />
                                             </td>
                                             <td >
                                                 <input type="number"
@@ -132,7 +138,8 @@ class Times extends Component {
                                                         this.handleChange(item.id)
                                                     }
                                                     ref="moreValue"
-                                                    className="form-control" />
+                                                    className="form-control"
+                                                    required />
                                             </td>
                                         </tr>)
                                     )
@@ -169,13 +176,13 @@ class Times extends Component {
                                             }
                                             onChange={
                                                 this.onChange
-                                            } /></th>
+                                            } disabled /></th>
                                         <th > <input type="number"
 
                                             name="moreTotalValue"
                                             value={moreTotalValue}
                                             style={{ width: "200px", height: "36px", borderRadius: "10px" }}
-                                            onChange={this.onChange} /></th>
+                                            onChange={this.onChange} disabled /></th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -183,22 +190,11 @@ class Times extends Component {
                             <button type="submit" onClick={() => {
                                 let total = (this.state.lessTotalValue + 4 * this.state.equalTotalValue + this.state.moreTotalValue) / 6;
                                 // console.log(total);
+                                let total1 = Math.round(total);
                                 let std = (this.state.moreTotalValue - this.state.lessTotalValue) / 6;
+                                let std1 = Math.round(std);
                                 //console.log(std);
                                 this.ref = firebase.firestore().collection("duration");
-                                // this.state = {
-                                //     // userId: uid,
-                                //     pertValue: total,
-                                //     stdDevValue: std,
-                                //     lessTotalValue:this.state.lessTotalValue,
-                                //     equalTotalValue: this.state.equalTotalValue,
-                                //     moreTotalValue: this.state.moreTotalValue,
-                                // };
-                                // onChange = (e) => {
-                                //     const state = this.state;
-                                //     state[e.target.name] = e.target.value;
-                                //     this.setState(state);
-                                // };
 
                                 const {
                                     //  userId,
@@ -211,8 +207,8 @@ class Times extends Component {
 
                                 this.ref.add({
                                     userId: superVisorAuthL[0].id,
-                                    pertValue: total,
-                                    stdDevValue: std,
+                                    pertValue: total1,
+                                    stdDevValue: std1,
                                     lessTotalValue,
                                     equalTotalValue,
                                     moreTotalValue,
@@ -234,7 +230,12 @@ class Times extends Component {
                                 //     moreTotalValue: "",
 
                                 // })
-                            }} className="btn btn-info" style={{ margin: "10px 50px" }}> Save </button>
+                                //this.setState({ isButtonClicked: true })
+                            }}
+
+                                className="btn btn-info" style={{ margin: "10px 50px" }}
+                            // disabled={this.state.isButtonClicked}> submit </button>
+                            > submit </button>
                         </form>
                     </div>
                 </div>

@@ -11,26 +11,22 @@ class Keyshow extends Component {
       keys: []
     };
   }
-
   handleCheck = ({ doc, ...board }) => {
     console.log("board", board)
     firebase
       .firestore()
       .collection("teams")
-      .doc(board.name)
+      .doc(board.key)
       .set(board);
-    firebase.firestore().collection('super_visors').doc(board.name).set({ doShowConsentForm: true }, { merge: true })
+    firebase.firestore().collection('super_visors').doc(board.key).set({ doShowConsentForm: true }, { merge: true })
   };
-
   onChange = (e) => {
     const state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
   };
-
   onSubmit = (e) => {
     e.preventDefault();
-
     const {
       name,
       emailid,
@@ -40,7 +36,6 @@ class Keyshow extends Component {
       designation,
       experience
     } = this.state;
-
     this.ref
       .add({
         name,
@@ -104,7 +99,7 @@ class Keyshow extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to="viewTeams"><button type="submit" class="btn btn-primary  float-right" >Create Team</button></Link></h4>
+            <h4><Link to="/viewTeams"><button type="submit" class="btn btn-primary  float-right" >Create Team</button></Link></h4>
             <form onSubmit={this.onSubmit}>
               <table class="table table-stripe">
                 <thead>

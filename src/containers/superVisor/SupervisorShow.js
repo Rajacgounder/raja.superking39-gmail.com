@@ -124,11 +124,9 @@ class SupervisorShow extends Component {
                   <tr>
                     <th>Name</th>
                     <th>Email-ID</th>
-                    <th>Password</th>
                     <th>Phone Number</th>
-                    <th>Address</th>
                     <th>Designation</th>
-                    <th>Experience</th>
+                    <th>Experience(in years)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -136,9 +134,7 @@ class SupervisorShow extends Component {
                     <tr>
                       <td><Link to={`/show/${board.key}`}>{board.name}</Link></td>
                       <td>{board.emailid}</td>
-                      <td>{board.password}</td>
                       <td>{board.phoneno}</td>
-                      <td>{board.address}</td>
                       <td>{board.designation}</td>
                       <td>{board.experience}</td>
                       {/* <td><input type="checkbox" onChange={()=>this.handleCheck(board)} defaultChecked={this.state.checked}/></td> */}

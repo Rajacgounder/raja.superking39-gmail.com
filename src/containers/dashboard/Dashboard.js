@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import Notifications from "./Notifications";
-// import ProjectList from "../projects/ProjectList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { Link, NavLink } from "react-router-dom";
@@ -13,8 +11,9 @@ import Notification from "../../assets/images/notification.jpg";
 import Profile from "../../assets/images/profile.png";
 import Key from "../../assets/images/key.jpg";
 import Keyrole from "../../assets/images/viewkey.jpg";
-import Team from "../../assets/images/viewTeam.png";
+import Team from "../../assets/images/viewTeam.jpg";
 import Dates from '../../assets/images/date.png'
+import Client from '../../assets/images/client.jpg'
 
 class Dashboard extends Component {
   render() {
@@ -23,79 +22,72 @@ class Dashboard extends Component {
     return (
       <div className="dashboard container my-3">
         <div className="row">
-          {/* <div className="col-sm-12 col-md-6 project-list">
-            <ProjectList projects={projects} />
-          </div>
-          <div className="col-sm-12 col-md-6">
-            <Notifications notifications={notifications} />
-          </div> */}
           <div>
-            {/* <Link to="/Consent" className="navbar-brand ml-3 ml-md-0">
-          Consent <i className="text-danger fas fa-box-open mx-1"></i>
-        </Link>
-        <Link to="/Upload" className="navbar-brand ml-3 ml-md-0">
-          Upload <i className="text-danger fas fa-box-open mx-1"></i>
-        </Link>
-        <Link to="/final" className="navbar-brand ml-3 ml-md-0">
-          REquest <i className="text-danger fas fa-box-open mx-1"></i>
-        </Link> */}
-
             <div class="image-section">
               <Link to="/viewFile">
                 <div class="section-style">
-                  <img src={Srs} height="200" width="350" alt="SRS" />
+                  <img src={Srs} height="300" width="400" alt="SRS" style={{ border: "solid" }} />
                   <p>Client SRS</p>
                 </div>
               </Link>
               <Link to="/Times">
                 <div class="section-style">
-                  <img src={Profile} height="200" width="400" alt="" />
-                  <p>SET DURATION</p>
+                  <img src={Profile} height="300" width="400" alt="" style={{ border: "solid" }} />
+                  <p>Set Duration</p>
                 </div></Link>
               <Link to="/SupervisorShow">
                 <div class="section-style">
-                  <img src={Key} height="200" width="400" alt="" />
+                  <img src={Key} height="300" width="400" alt="" style={{ border: "solid" }} />
                   <p>View Key Roles</p>
                 </div>
               </Link>
-            </div>
+            </div><br></br>
 
             <div class="image-section">
               <Link to="/CreateProject">
                 <div class="section-style">
-                  <img src={Consent} height="100" width="400" alt="" />
+                  <img src={Consent} height="300" width="400" alt="" style={{ border: "solid" }} />
                   <p>Consent</p>
                 </div>
               </Link>
-
               <Link to="/ViewSupervisor">
                 <div class="section-style">
-                  <img src={Keyrole} height="200" width="400" alt="" />
+                  <img src={Keyrole} height="300" width="400" alt="" style={{ border: "solid" }} />
                   <p>Select Roles</p>
                 </div>
               </Link>
               <Link to="/Notification">
                 <div class="section-style">
-                  <img src={Notification} height="200" width="400" alt="" />
+                  <img src={Notification} height="300" width="400" alt="" style={{ border: "solid" }} />
                   <p>Notifications</p>
                 </div>
               </Link>
             </div>
+            <br></br>
             <div class="image-section">
               <Link to="/ClientData">
                 <div class="section-style">
-                  <img src={Notification} height="200" width="400" alt="" />
+                  <img src={Client} height="200" width="400" alt="" style={{ border: "solid" }} />
                   <p>Client Profile</p>
                 </div></Link>
               <Link to="/viewTeams">
                 <div class="section-style">
-                  <img src={Team} height="200" width="400" alt="" />
-                  <p>View Teams</p>
+                  <img src={Team} height="200" width="400" alt="" style={{ border: "solid" }} />
+                  <p>View Team</p>
                 </div></Link>
               <Link to="/viewDuration">
                 <div class="section-style">
-                  <img src={Dates} height="200" width="400" alt="" />
+                  <img src={Dates} height="200" width="400" alt="" style={{ border: "solid" }} />
                   <p>View Duration</p>
+                </div></Link>
+            </div>
+            <br>
+            </br>
+            <div class="image-section">
+              <Link to="/updateConsent">
+                <div class="section-style">
+                  <img src={Consent} height="200" width="400" alt="" style={{ border: "solid" }} />
+                  <p>Update Consent</p>
                 </div></Link>
             </div>
           </div>

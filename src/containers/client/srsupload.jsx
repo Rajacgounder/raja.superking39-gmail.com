@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { storage } from '../../config/fbConfig';
 import './upload.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//import { Alert } from 'react-alert'
 
-class ImageUpload extends Component {
+class fileUpload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: null,
+      file: null,
       url: '',
       progress: 0
     }
@@ -17,27 +20,49 @@ class ImageUpload extends Component {
   }
   handleChange = e => {
     if (e.target.files[0]) {
-      const image = e.target.files[0];
-      this.setState(() => ({ image }));
+      const file = e.target.files[0];
+      this.setState(() => ({ file }));
     }
   }
+
   handleUpload = () => {
-    const { image } = this.state;
-    console.log(image);
-    const uploadTask = storage.ref(`document/${image.name}`).put(image);
+    const { file } = this.state;
+    alert("Are you sure want upload the document!");
+    console.log(file);
+    const uploadTask = storage.ref(`document/${file.name}`).put(file);
+    alert("empty!")
     uploadTask.on('state_changed',
       (snapshot) => {
         // progrss function ....
         const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
         this.setState({ progress });
+        toast.success('File Uploaded successfully!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       },
       (error) => {
+        //  alert("File not uploaded");
         // error function ....
-        console.log(error);
+        console.log("file not uploaded", error);
+        toast.error('Something went wrong!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       },
       () => {
         // complete function ....
-        storage.ref('document').child(image.name).getDownloadURL().then(url => {
+        storage.ref('document').child(file.name).getDownloadURL().then(url => {
           console.log(url);
           this.setState({ url });
         })
@@ -66,4 +91,4 @@ class ImageUpload extends Component {
   }
 }
 
-export default ImageUpload;
+export default fileUpload;
