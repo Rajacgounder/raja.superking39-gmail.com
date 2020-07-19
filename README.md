@@ -1,4 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About This project
+This project MCA major project.Where Manager can estimate the duration taken to complete each task by the employee.
 
 ## Available Scripts
 
