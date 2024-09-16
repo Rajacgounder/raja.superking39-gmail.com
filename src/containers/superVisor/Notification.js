@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react"
 import { Link } from 'react-router-dom';
-import firebase from '../../config/fbConfig';
+import firebase from "../../config/fbConfig"
 
-
-
-class ViewTeam extends Component {
+class Notification extends Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('teams');
+    this.ref = firebase.firestore().collection('final');
     this.unsubscribe = null;
     this.state = {
       keys: []
@@ -16,14 +14,12 @@ class ViewTeam extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const keys = [];
     querySnapshot.forEach((doc) => {
-      const { name, emailid, password, phoneno, address, designation, companyname, experience } = doc.data();
+      const { message, reason } = doc.data();
       keys.push({
         key: doc.id,
         doc, // DocumentSnapshot
-        name,
-        emailid,
-        designation,
-        experience,
+        message,
+        reason,
       });
     });
     this.setState({
@@ -39,27 +35,16 @@ class ViewTeam extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              <center>Teams</center>
+              <center>Notification</center>
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to="/" class="btn btn-primary">Send Consent</Link></h4>
             <table class="table table-stripe">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email-ID</th>
-                  <th>Designation</th>
-                  <th>Experience</th>
-                </tr>
-              </thead>
               <tbody>
                 {this.state.keys.map(board =>
                   <tr>
-                    <td>{board.name}</td>
-                    <td>{board.emailid}</td>
-                    <td>{board.designation}</td>
-                    <td>{board.experience}</td>
+                    <td>{board.reason}</td>
+                    <td>{board.message}</td>
                   </tr>
                 )}
               </tbody>
@@ -70,4 +55,8 @@ class ViewTeam extends Component {
     );
   }
 }
-export default ViewTeam;
+export default Notification;
+
+
+
+

@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/authActions";
+// import { signOut } from "../../store/actions/clientAction";
+// import { signOut } from "../../store/actions/projectActions";
 
 const SignedInLinks = (props) => {
   return (
@@ -18,11 +20,11 @@ const SignedInLinks = (props) => {
       </li>
       <li className="nav-item">
         <a className="nav-link">
-          {props.profile.firstName}
+          {props.profile.firstName} 
         </a>
       </li>
       <li className="nav-item">
-        <a href="#" onClick={props.signOut} className="nav-link">
+        <a href="/" onClick={props.signOut} className="nav-link">
         <i class="fas fa-sign-out-alt"></i>
         </a>
       </li>

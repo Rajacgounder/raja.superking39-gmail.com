@@ -25,6 +25,7 @@ class Create extends Component {
     this.setState(state);
   };
 
+
   onSubmit = (e) => {
     e.preventDefault();
 
@@ -51,6 +52,7 @@ class Create extends Component {
         experience,
         doTermsAndConditionsAccepted,
         hasSelectedTermsAndConditions,
+        doShowConsentForm: false,
       })
       .then((docRef) => {
         this.setState({
@@ -89,73 +91,80 @@ class Create extends Component {
           </div>
           <div class="panel-body">
             <h4>
-              <Link to="/ViewSupervisor" class="btn btn-primary">
-                KEy roles
+              <Link to="/SupervisorShow" class="btn btn-primary">
+                KEY roles
               </Link>
             </h4>
-            <form onSubmit={this.onSubmit}>
-              <div class="form-group">
-                <label for="name">Name:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="name"
-                  value={name}
-                  onChange={this.onChange}
-                  placeholder="Name"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="emailid">emailid</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  name="emailid"
-                  value={emailid}
-                  onChange={this.onChange}
-                  placeholder="xyz@gmail.com"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="password">password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  name="password"
-                  value={password}
-                  onChange={this.onChange}
-                  placeholder="********"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="phoneno">Phone Number</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="phoneno"
-                  value={phoneno}
-                  onChange={this.onChange}
-                  placeholder="9876543211"
-                  required
-                  min="10"
-                />
-              </div>
-              <div class="form-group">
-                <label for="address">Address</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="address"
-                  value={address}
-                  onChange={this.onChange}
-                  placeholder="address"
-                  required
-                />
-              </div>
-              <div class="form-group">
+            <center>
+              <form onSubmit={this.onSubmit}>
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    value={name}
+                    onChange={this.onChange}
+                    placeholder="Name"
+                    style={{ width: "300px" }}
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="emailid">emailid</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="emailid"
+                    value={emailid}
+                    onChange={this.onChange}
+                    placeholder="xyz@gmail.com"
+                    style={{ width: "300px" }}
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    minLength="8"
+                    value={password}
+                    onChange={this.onChange}
+                    placeholder="********"
+                    style={{ width: "300px" }}
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="phoneno">Phone Number</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    name="phoneno"
+                    value={phoneno}
+                    onChange={this.onChange}
+                    placeholder="phone no"
+                    style={{ width: "300px" }}
+                    required
+                    minLength="10"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="address"
+                    value={address}
+                    onChange={this.onChange}
+                    placeholder="address"
+                    style={{ width: "300px" }}
+                    required
+                  />
+                </div>
+                {/* <div class="form-group">
                 <label for="designation">Designation</label>
                 <input
                   type="text"
@@ -164,25 +173,46 @@ class Create extends Component {
                   value={designation}
                   onChange={this.onChange}
                   placeholder="Designation"
+                  style={{ width: "300px" }}
+                  min="6"
+                  max="18"
                   required
                 />
-              </div>
-              <div class="form-group">
-                <label for="experience">Experience</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="experience"
-                  value={experience}
-                  onChange={this.onChange}
-                  placeholder="experience"
-                  required
-                />
-              </div>
-              <button type="submit" class="btn btn-success">
-                Submit
+              </div> */}
+                <div class="form-group">
+                  <label for="designation">Designation</label>
+                  <select style={{ width: "300px" }} required
+                    value={designation}
+                    onChange={this.onChange}
+                    set name="designation"
+                    class="form-control">
+                    <option value="DS" > Select Designation</option>
+                    <option value="Technical Team Leader">Technical Team Leader</option>
+                    <option value="IT Architect">IT Architect</option>
+                    <option value="Test Lead">Test Lead</option>
+                    <option value="Program Manager">Program Manager</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="experience">Experience(in years)</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="experience"
+                    min="6"
+                    max="18"
+                    value={experience}
+                    onChange={this.onChange}
+                    placeholder="experience"
+                    style={{ width: "300px" }}
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-success">
+                  Submit
               </button>
-            </form>
+              </form>
+            </center>
           </div>
         </div>
       </div>

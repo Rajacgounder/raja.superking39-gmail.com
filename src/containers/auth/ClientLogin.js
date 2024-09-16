@@ -8,7 +8,6 @@ class Client extends Component {
     email: "",
     password: "",
   };
-
   handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value,
@@ -26,7 +25,6 @@ class Client extends Component {
       }
     }
   }
-
   render() {
     const { authError, auth } = this.props;
     if (auth.uid) return <Redirect to="/" />;
@@ -46,6 +44,7 @@ class Client extends Component {
               onChange={this.handleChange}
               value={this.state.email}
               placeholder="Enter email"
+              style={{ width: "400px" }}
             />
           </div>
           <div className="form-group">
@@ -57,6 +56,7 @@ class Client extends Component {
               onChange={this.handleChange}
               value={this.state.password}
               placeholder="Password"
+              style={{ width: "400px" }}
             />
           </div>
           {authError ? <div className="text-danger my-2">{authError}</div> : null}

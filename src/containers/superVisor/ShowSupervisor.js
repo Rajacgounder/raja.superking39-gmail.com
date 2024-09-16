@@ -8,7 +8,6 @@ class Show extends Component {
     super(props);
     this.state = {
       board: {},
-
       key: ''
     };
   }
@@ -28,7 +27,7 @@ class Show extends Component {
     });
   }
 
-  delete(id){
+  delete(id) {
     firebase.firestore().collection('super_visors').doc(id).delete().then(() => {
       console.log("Document successfully deleted!");
       this.props.history.push("/SupervisorShow")
@@ -42,7 +41,7 @@ class Show extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4><Link to="/SupervisorShow">Key Role Data</Link></h4>
+            <h4><Link to="/SupervisorShow">Key Role Data</Link></h4>
             <h3 class="panel-title">
               {this.state.board.name}
             </h3>
@@ -59,7 +58,7 @@ class Show extends Component {
               <dd>{this.state.board.address}</dd>
               <dt>Desigation:</dt>
               <dd>{this.state.board.designation}</dd>
-              <dt>Experience:</dt>
+              <dt>Experience(in years):</dt>
               <dd>{this.state.board.experience}</dd>
             </dl>
             <Link to={`/edit/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;

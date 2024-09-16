@@ -28,7 +28,7 @@ class SignUp extends Component {
     return (
       <div className="container my-5">
         <div className="signup-header my-5">
-          <h1>Sign up</h1>
+          <h1> Manager Sign up</h1>
           <small className="text-muted">Registartion is easy and free.</small>
         </div>
         <form onSubmit={this.handleSubmit}>
@@ -42,6 +42,7 @@ class SignUp extends Component {
               value={this.state.email}
               aria-describedby="emailHelp"
               placeholder="Enter email"
+              style={{ width: "400px" }}
             />
             <small id="emailHelp" className="form-text text-muted">
               We'll never share your email with anyone else.
@@ -56,6 +57,7 @@ class SignUp extends Component {
               onChange={this.handleChange}
               value={this.state.password}
               placeholder="Password"
+              style={{ width: "400px" }}
             />
           </div>
           <div className="form-group">
@@ -67,6 +69,7 @@ class SignUp extends Component {
               onChange={this.handleChange}
               value={this.state.firstName}
               placeholder="First name"
+              style={{ width: "400px" }}
             />
           </div>
           <div className="form-group">
@@ -78,9 +81,10 @@ class SignUp extends Component {
               onChange={this.handleChange}
               value={this.state.lastName}
               placeholder="Last name"
+              style={{ width: "400px" }}
             />
-            </div>
-            {/* <div className="form-group">
+          </div>
+          {/* <div className="form-group">
             <label htmlFor="designation">Designation</label>
             <input
               type="text"
@@ -140,4 +144,4 @@ const mapStateToProps = state => ({
   auth: state.firebase.auth,
 });
 
-export default connect(mapStateToProps, {signUp})(SignUp);
+export default connect(mapStateToProps, { signUp })(SignUp);

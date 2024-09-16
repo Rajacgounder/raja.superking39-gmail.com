@@ -28,6 +28,14 @@ class SupervisorDash extends Component {
       disabledStylesForTimeDuration = { pointerEvents: "none", opacity: 0.7 };
     }
 
+    let disabledStylesForConsent = {};
+    if (
+      superVisorAuthL.length &&
+      !superVisorAuthL[0].doShowConsentForm
+    ) {
+      disabledStylesForConsent = { pointerEvents: "none", opacity: 0.7 };
+    }
+
     // let disabledStylesForConsent = {};
     // if (
     //   superVisorAuthL.length &&
@@ -57,25 +65,26 @@ class SupervisorDash extends Component {
         </Link> */}
 
             <div class="image-section">
-              <div class="section-style">
-                <img src={Srs} height="200" width="400" alt="" />
-                <p>VIEW SRS</p>
-              </div>
+              <Link to="/viewFile">
+                <div class="section-style">
+                  <img src={Srs} height="300" width="400" alt="" style={{ border: "solid" }} />
+                  <p>VIEW SRS</p>
+                </div></Link>
 
               {/* <div style={disabledStylesForConsent}> */}
-              <div>
+              <div style={disabledStylesForConsent}>
                 <Link to="/Premission">
                   <div class="section-style">
-                    <img src={Consent} height="200" width="400" alt="" />
+                    <img src={Consent} height="300" width="400" alt="" style={{ border: "solid" }} />
                     <p>VIEW CONSENT</p>
                   </div>
                 </Link>
               </div>
 
               <div style={disabledStylesForTimeDuration}>
-                <Link to="/Timeduration">
+                <Link to="/Time">
                   <div class="section-style">
-                    <img src={Duration} height="200" width="400" alt="" />
+                    <img src={Duration} height="300" width="400" alt="" style={{ border: "solid" }} />
                     <p>SELECT TIME DURATION</p>
                   </div>
                 </Link>

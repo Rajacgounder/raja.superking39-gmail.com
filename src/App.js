@@ -31,6 +31,16 @@ import ClientShow from "./containers/client/ClientShow"
 // import Client from "./containers/auth/clientLogin"
 import ViewTeam from "./containers/superVisor/viewTeams"
 // import Homepage from "./containers/dashboard/Homepage"
+import Time from "./containers/superVisor/Time"
+import Notification from "./containers/superVisor/Notification"
+import Times from "./containers/superVisor/Times"
+import ViewDuration from "./containers/superVisor/viewDuration"
+import DisplayFile from "./containers/client/viewFile"
+import Due from "./containers/client/Due"
+//CRUD operations on Consent
+import ProjectShow from "./containers/projects/ProjectShow"
+import ProjectEdit from "./containers/projects/ProjectEdit"
+import Updateconsent from "./containers/superVisor/updateConsent"
 
 
 // import CreateProject from "./containers/projects/CreateProject"
@@ -41,7 +51,7 @@ class App extends Component {
       <Router history={history}>
         <Navbar />
         <Switch>
-        {/* <Route exact path="/" component={Homepage}/> */}
+          {/* <Route exact path="/" component={Homepage}/> */}
           <Route exact path="/" component={Dashboard} />
           <Route path="/project/:id" component={ProjectDetails} />
           <Route path="/create" component={CreateProject} />
@@ -68,8 +78,17 @@ class App extends Component {
           <Route path="/react/:id" component={ClientEdit} />
           <Route path="/CreateClient" component={CreateClient} />
           <Route path="/show1/:id" component={ClientShow} />
-          <Route path="/viewTeams" component={ViewTeam}/>
-         
+          <Route path="/viewTeams" component={ViewTeam} />
+          <Route path="/Time" component={Time} />
+          <Route path="/Notification" component={Notification} />
+          <Route path="/Times" component={Times} />
+          <Route path="/viewFile" component={DisplayFile} />
+          <Route path="/viewDuration" component={ViewDuration} />
+          <Route path="/Due" component={Due} />
+          <Route path="/rule/:id" component={ProjectShow} />
+          <Route path="/ruleedit/:id" component={ProjectEdit} />
+          <Route path="/updateConsent" component={Updateconsent} />
+
         </Switch>
       </Router>
     );

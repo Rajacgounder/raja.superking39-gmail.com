@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { createProject } from "../../store/actions/projectActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { getConsents } from "../../store/actions/consentAction";
+//import { getConsents } from "../../store/actions/consentAction";
+import { Link } from 'react-router-dom';
+import firebase from '../../config/fbConfig';
 
 class CreateProject extends Component {
   state = {
@@ -19,12 +21,32 @@ class CreateProject extends Component {
     e.preventDefault();
     this.props.createProject(this.state, this.props.history);
   };
+  // constructor(props) {
+  //   super(props);
+  //   this.ref = firebase.firestore().collection('projects');
+  //   this.unsubscribe = null;
+  //   this.state = {
+  //     keys: []
+  //   };
+  // }
 
-  componentDidMount() {
-    this.props.getConsents();
-  }
-  
-
+  // onCollectionUpdate = (querySnapshot) => {
+  //   const keys = [];
+  //   querySnapshot.forEach((doc) => {
+  //     const { content } = doc.data();
+  //     keys.push({
+  //       key: doc.id,
+  //       doc, // DocumentSnapshot
+  //       content,
+  //     });
+  //   });
+  //   this.setState({
+  //     keys
+  //   });
+  // }
+  // componentDidMount() {
+  //   this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+  // }
   render() {
     const { auth, loading } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
@@ -34,13 +56,13 @@ class CreateProject extends Component {
         <h1>Create new Consent</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label htmlFor="content">Content</label>
+            <label htmlFor="content">Rules</label>
             <textarea
               className="form-control"
               id="content"
               onChange={this.handleChange}
               value={this.state.content}
-              placeholder="Content"
+              placeholder="Rules"
               required
             />
           </div>
@@ -50,31 +72,28 @@ class CreateProject extends Component {
           <h1>
             <center>Consent Form</center>
           </h1>
-          
+
           {consents.length > 0 ? (
             consents.map((consent) => {
               return <p>{consent.content}</p>;
-              
+
             })
           ) : (
-            <p>Loading...</p>
-          )}
+              <p>Loading...</p>
+            )}
 
-          <button type="submit" className="btn btn-dark" disabled={loading}>
-            Update
-          </button>
+          {/* <Link to={"/project/" + props.match.params.id + "/edit"}><button className="waves-effect btn right orange"><i className="material-icons left">mode_edit</i>Edit Consent</button></Link> */}
         </form>
       </div>
     );
   }
 }
-
 const mapStateToProps = (state) => ({
   auth: state.firebase.auth,
   loading: state.project.isLoading,
   consents: state.project.projects,
 });
 
-export default connect(mapStateToProps, { createProject, getConsents })(
+export default connect(mapStateToProps, { createProject })(
   CreateProject
 );

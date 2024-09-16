@@ -16,6 +16,7 @@ class Duration extends Component{
        this.state = {
             totalValue: 0,
             duration: {},
+            
         };
     }
     onChange = (e) => {
